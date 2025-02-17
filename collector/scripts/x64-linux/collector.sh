@@ -215,6 +215,15 @@ try_to_download eza_x86_64-unknown-linux-musl.tar.gz \
   https://github.com/eza-community/eza/releases/download/v${EZA_VERSION}/eza_x86_64-unknown-linux-musl.tar.gz
 tar -C ${HOME}/.local/bin -xf ${DOWNLOADS}eza_x86_64-unknown-linux-musl.tar.gz eza
 
+
+# Install delta - modern git diff pager ()
+try_to_download delta-${DELTA_VERSION}-x86_64-unknown-linux-musl.tar.gz \
+  https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/delta-${DELTA_VERSION}-x86_64-unknown-linux-musl.tar.gz
+tar --strip-components=1 -C ${HOME}/.local/bin \
+  -xf ${DOWNLOADS}delta-${DELTA_VERSION}-x86_64-unknown-linux-musl.tar.gz \
+  delta-${DELTA_VERSION}-x86_64-unknown-linux-musl/delta
+
+
 ### End of script, open shell if indicated.
 
 cd /home/user
@@ -223,6 +232,7 @@ if [ "${OPEN_SHELL}" == "yes" ]; then
 fi
 
 ### Other tools to consider integrating:
+# tldr-pages
 # starship
 #   theme: https://github.com/catppuccin/starship
 # lsd
