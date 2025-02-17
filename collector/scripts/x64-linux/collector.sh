@@ -20,12 +20,8 @@ KANATA_VERISON=1.8.0
 FD_VERSION=10.2.0
 RIPGREP_VERSION=14.1.1
 EZA_VERSION=0.20.21
+BTOP_VERSION=1.4.0
 
-VIVID_THEME=catppuccin-mocha
-LAZYGIT_THEME=mocha/blue.yml
-YAZI_THEME=mocha/catppuccin-mocha-yellow.toml
-BTOP_THEME=catppuccin_mocha.theme
-K9S_THEME=catppuccin-mocha
 
 ### Initialize config setup
 mkdir -p ${HOME}/.local/bin && chmod 700 ${HOME}/.local
@@ -136,13 +132,10 @@ try_to_download k9s_Linux_amd64.tar.gz \
 tar -C ${HOME}/.local/bin/ -xf ${DOWNLOADS}k9s_Linux_amd64.tar.gz k9s
 
 
-### Setup btop
-
-# Theme btop.
-mkdir -p ${HOME}/.config/catppuccin/ && cd ${HOME}/.config/catppuccin/ 
-git clone https://github.com/catppuccin/btop
-mkdir -p ${HOME}/.config/btop/themes
-cp ${HOME}/.config/catppuccin/btop/themes/${BTOP_THEME} ${HOME}/.config/btop/themes/
+# Install btop
+try_to_download btop-x86_64-linux-musl.tbz \
+  https://github.com/aristocratos/btop/releases/download/v${BTOP_VERSION}/btop-x86_64-linux-musl.tbz
+tar --strip-components=2 -C ${HOME}/.local/bin/ -xf ${DOWNLOADS}btop-x86_64-linux-musl.tbz btop/bin/btop
 
 
 ### Setup tty
