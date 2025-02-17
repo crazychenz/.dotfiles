@@ -22,7 +22,7 @@ services:
     entrypoint: ["/bin/sh","-c"]
     command:
     - |
-      apk add -U --no-cache git curl bash setpriv rsync yq
+      apk add -U --no-cache git curl bash setpriv rsync yq python3
       apk add -U --no-cache ncurses # required for tput 
       apk add -U --no-cache neovim # neovim.io requires glibc
       apk add -U --no-cache build-base # alpine-sdk # build-essential

@@ -1,16 +1,17 @@
-#!/bin/bash 
+#!/bin/bash
 
 USER_SETTINGS_FPATH=${HOME}/.bash-user-settings.sh
 DOWNLOADS=/opt/downloads/
 
 UV_VERSION=0.6.0
-K3S_VERSION=v1.30.0%2Bk3s1
+#K3S_VERSION=1.30.0%2Bk3s1
+K3S_VERSION=1.32.1%2Bk3s1
 KETALL_VERSION=v1.3.8
 TMUX_VERSION=v3.3a
 NVIM_VERSION=v0.10.3
 LAZYGIT_VERSION=0.45.2
-VIVID_VERSION=v0.10.1
-YAZI_VERSION=v0.4.2
+VIVID_VERSION=0.10.1
+YAZI_VERSION=0.4.2
 GLOW_VERSION=2.0.0
 CURLIE_VERSION=1.7.2
 ZOXIDE_VERSION=0.9.7
@@ -21,10 +22,12 @@ FD_VERSION=10.2.0
 RIPGREP_VERSION=14.1.1
 EZA_VERSION=0.20.21
 BTOP_VERSION=1.4.0
+DELTA_VERSION=0.18.2
 
 
 ### Initialize config setup
 mkdir -p ${HOME}/.local/bin && chmod 700 ${HOME}/.local
+export PATH=/home/user/.local/bin:${PATH}
 
 
 # The main downloader function.
@@ -77,29 +80,29 @@ tar -C ${HOME}/.local/ -xf ${DOWNLOADS}nvim-linux64.tar.gz
 #patch ${HOME}/.local/share/nvim/lazy/NvChad/lua/nvchad/configs/cmp.lua cmd-mapping-confirm.patch
 
 
-### Install LazyGit
+### Install LazyGit (https://github.com/jesseduffield/lazygit)
 try_to_download lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz \
   https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz
 tar -C ${HOME}/.local/bin -xf ${DOWNLOADS}lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz lazygit
 
 
-### Install Vivid
+### Install Vivid (https://github.com/sharkdp/vivid/releases)
 try_to_download vivid-${VIVID_VERSION}-x86_64-unknown-linux-musl.tar.gz \
-  https://github.com/sharkdp/vivid/releases/download/${VIVID_VERSION}/vivid-${VIVID_VERSION}-x86_64-unknown-linux-musl.tar.gz
+  https://github.com/sharkdp/vivid/releases/download/v${VIVID_VERSION}/vivid-v${VIVID_VERSION}-x86_64-unknown-linux-musl.tar.gz
 tar --strip-components=1 -C ${HOME}/.local/bin \
-  -xf vivid-${VIVID_VERSION}-x86_64-unknown-linux-musl.tar.gz \
-  vivid-${VIVID_VERSION}-x86_64-unknown-linux-musl/vivid
+  -xf vivid-v${VIVID_VERSION}-x86_64-unknown-linux-musl.tar.gz \
+  vivid-v${VIVID_VERSION}-x86_64-unknown-linux-musl/vivid
 
 
-### Install Yazi
+### Install Yazi (https://github.com/sxyazi/yazi)
 try_to_download yazi-x86_64-unknown-linux-musl.zip \
-  https://github.com/sxyazi/yazi/releases/download/${YAZI_VERSION}/yazi-x86_64-unknown-linux-musl.zip
-pushd ${DOWNLOADS} ; unzip -o yazi-x86_64-unknown-linux-musl.zip ; popd ${DOWNLOADS}
+  https://github.com/sxyazi/yazi/releases/download/v${YAZI_VERSION}/yazi-x86_64-unknown-linux-musl.zip
+pushd ${DOWNLOADS} ; unzip -o yazi-x86_64-unknown-linux-musl.zip ; popd
 cp ${DOWNLOADS}yazi-x86_64-unknown-linux-musl/yazi ${HOME}/.local/bin/
 cp ${DOWNLOADS}yazi-x86_64-unknown-linux-musl/ya ${HOME}/.local/bin/
 
 
-### Install glow
+### Install glow (https://github.com/charmbracelet/glow)
 try_to_download glow_${GLOW_VERSION}_Linux_x86_64.tar.gz \
   https://github.com/charmbracelet/glow/releases/download/v${GLOW_VERSION}/glow_${GLOW_VERSION}_Linux_x86_64.tar.gz
 tar --strip-components=1 -C ${HOME}/.local/bin \
@@ -108,9 +111,8 @@ tar --strip-components=1 -C ${HOME}/.local/bin \
 
 ### Install kubectl (k3s as client) (https://github.com/k3s-io/k3s/releases)
 try_to_download k3s \
-  https://github.com/k3s-io/k3s/releases/download/${K3S_VERSION}/k3s
-  # Install k3s to bundle
-chmod +x ${DOWNLOADS}k3s ; cp ${DOWNLOADS} k3s ${HOME}/.local/bin/
+  https://github.com/k3s-io/k3s/releases/download/v${K3S_VERSION}/k3s
+chmod +x ${DOWNLOADS}k3s ; cp ${DOWNLOADS}k3s ${HOME}/.local/bin/
 pushd ${HOME}/.local/bin ; ln -s k3s kubectl ; popd
 
 
@@ -126,16 +128,16 @@ tar -C ${DOWNLOADS} -xf ${DOWNLOADS}get-all-amd64-linux.tar.gz get-all-amd64-lin
 mv ${DOWNLOADS}get-all-amd64-linux ${HOME}/.local/bin/kubectl-get_all
 
 
-# Install k9s
+# Install k9s (https://github.com/derailed/k9s)
 try_to_download k9s_Linux_amd64.tar.gz \
   https://github.com/derailed/k9s/releases/download/v0.32.7/k9s_Linux_amd64.tar.gz
 tar -C ${HOME}/.local/bin/ -xf ${DOWNLOADS}k9s_Linux_amd64.tar.gz k9s
 
 
-# Install btop
+# Install btop (https://github.com/aristocratos/btop)
 try_to_download btop-x86_64-linux-musl.tbz \
   https://github.com/aristocratos/btop/releases/download/v${BTOP_VERSION}/btop-x86_64-linux-musl.tbz
-tar --strip-components=2 -C ${HOME}/.local/bin/ -xf ${DOWNLOADS}btop-x86_64-linux-musl.tbz btop/bin/btop
+tar --strip-components=3 -C ${HOME}/.local/bin/ -xf ${DOWNLOADS}btop-x86_64-linux-musl.tbz ./btop/bin/btop
 
 
 ### Setup tty
@@ -203,10 +205,10 @@ tar --strip-components=1 -C ${HOME}/.local/bin \
   ripgrep-${RIPGREP_VERSION}-x86_64-unknown-linux-musl/rg
 
 
-# Install exa - modern ls (https://github.com/eza-community/eza / https://eza.rocks/)
+# Install eza - modern ls (https://github.com/eza-community/eza / https://eza.rocks/)
 try_to_download eza_x86_64-unknown-linux-musl.tar.gz \
   https://github.com/eza-community/eza/releases/download/v${EZA_VERSION}/eza_x86_64-unknown-linux-musl.tar.gz
-tar -C ${HOME}/.local/bin -xf ${DOWNLOADS}eza_x86_64-unknown-linux-musl.tar.gz eza
+tar --strip-components=1 -C ${HOME}/.local/bin -xf ${DOWNLOADS}eza_x86_64-unknown-linux-musl.tar.gz ./eza
 
 
 # Install delta - modern git diff pager ()
