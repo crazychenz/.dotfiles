@@ -109,6 +109,22 @@ if [ ! -z "$(which kubectl)" ]; then
   complete -o default -F __start_kubectl kc
 fi
 
+if [ ! -z "$(which zoxide)" ]; then
+  eval "$(zoxide init bash)"
+fi
+
+if [ ! -z "$(which fzf)" ]; then
+  eval "$(fzf --bash)"
+fi
+
+if [ ! -z "$(which bat)" ]; then
+  eval "$(bat --completion bash)"
+fi
+
+if [ ! -z "$(which rg)" ]; then
+  eval "$(rg --generate complete-bash)"
+fi
+
 tools() {
   echo "tmux - terminal multiplexer"
   echo "nvim - neovim text editor"
