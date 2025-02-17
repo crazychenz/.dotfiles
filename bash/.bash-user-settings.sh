@@ -125,6 +125,10 @@ if [ ! -z "$(which rg)" ]; then
   eval "$(rg --generate complete-bash)"
 fi
 
+if [ ! -z "\$(ldd --version | grep -i -e gnu -e glibc)" ]; then
+  export PATH=~/.local/nvim-linux64/bin:${PATH}
+fi
+
 tools() {
   echo "tmux - terminal multiplexer"
   echo "nvim - neovim text editor"

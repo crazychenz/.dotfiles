@@ -1,9 +1,10 @@
 #!/bin/sh
 
 mkdir -p downloads/x64-linux
-mkdir -p bundle/x64-linux
+mkdir -p bundle/x64-linux/
 
 rm -rf bundle/x64-linux/.*
+mkdir bundle/x64-linux/.local
 
 export ARCH_OS=x64-linux 
 export UID=$(id -u) 

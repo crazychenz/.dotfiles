@@ -1,6 +1,5 @@
-#!/bin/bash
+#!/bin/bash -v
 
-USER_SETTINGS_FPATH=${HOME}/.bash-user-settings.sh
 DOWNLOADS=/opt/downloads/
 
 UV_VERSION=0.6.0
@@ -51,8 +50,9 @@ zcat ${DOWNLOADS}tmux.linux-amd64.gz > ${HOME}/.local/bin/tmux && chmod +x ${HOM
 
 
 # Install Tmux Plugin Manager (https://github.com/tmux-plugins/tpm)
-mkdir -p ${HOME}/.tmux/plugins
-git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
+###mkdir -p ${HOME}/.tmux/plugins
+###git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
+
 # Manually:
 # tmux start-server
 # tmux new-session -d
@@ -87,7 +87,7 @@ tar -C ${HOME}/.local/bin -xf ${DOWNLOADS}lazygit_${LAZYGIT_VERSION}_Linux_x86_6
 
 
 ### Install Vivid (https://github.com/sharkdp/vivid/releases)
-try_to_download vivid-${VIVID_VERSION}-x86_64-unknown-linux-musl.tar.gz \
+try_to_download vivid-v${VIVID_VERSION}-x86_64-unknown-linux-musl.tar.gz \
   https://github.com/sharkdp/vivid/releases/download/v${VIVID_VERSION}/vivid-v${VIVID_VERSION}-x86_64-unknown-linux-musl.tar.gz
 tar --strip-components=1 -C ${HOME}/.local/bin \
   -xf vivid-v${VIVID_VERSION}-x86_64-unknown-linux-musl.tar.gz \
