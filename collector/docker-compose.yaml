@@ -25,7 +25,5 @@ services:
       apk add -U --no-cache git curl bash setpriv rsync yq
       apk add -U --no-cache ncurses # required for tput 
       apk add -U --no-cache neovim # neovim.io requires glibc
-      apk add -U --no-cache btop
       apk add -U --no-cache build-base # alpine-sdk # build-essential
-      #su ${UID} -c /opt/scripts/collector.sh
       setpriv --reuid=${UID} --regid=${GID} --clear-groups /opt/scripts/collector.sh
