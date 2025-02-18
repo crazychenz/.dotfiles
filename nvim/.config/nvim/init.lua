@@ -38,3 +38,4 @@ end)
 
 vim.cmd("hi Normal guibg=NONE")
 vim.cmd("cnoreabbrev <expr> q getcmdtype() == \":\" && getcmdline() == 'q' ? '' : 'q'")
+vim.keymap.set("n", "<leader>q", ":bp | sp | bn | bd<CR>", { silent = true })
