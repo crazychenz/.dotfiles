@@ -1,5 +1,7 @@
 # Crazychenz's `.dotfiles`
 
+Offline, All The Things, Config:
+
 ```sh
 # Install GNU Stow
 sudo apt-get install stow
@@ -8,14 +10,31 @@ sudo apt-get install stow
 cd && git clone https://github.com/crazychenz/.dotfiles.git
 
 # Collect user specific applications (assumes docker installed).
-cd .dotfiles/collector && ./bundle.sh
+cd .dotfiles/offline/collector && ./bundle.sh
 
 # Install user specific applications to ~/.local.
-cd && ./.dotfiles/collector/x64-linux_config_install.sh
+cd && ./.dotfiles/offline/collector/x64-linux_config_install.sh
 
 # Initialize user specific configurations.
-cd ./.dotfiles && stow * && source ~/.bash-user-settings.sh
+cd ./.dotfiles/offline && stow --target=$HOME * && source ~/.bash-user-settings.sh
 ```
+
+Lighter, Online, More Deliberate, Config:
+
+```sh
+# Install GNU Stow
+sudo apt-get install stow
+
+# Clone .dotfiles repo
+cd && git clone https://github.com/crazychenz/.dotfiles.git
+
+# Manually install Debian, Neovim 10+, LightDM, i3, urxvt, tmux.
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Initialize user specific configurations.
+cd ./.dotfiles/mouseless && stow --target=$HOME * && source ~/.bash-user-settings.sh
+```
+
 
 ## Stack Includes
 
