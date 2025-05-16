@@ -1,0 +1,1 @@
+../../../.dotfiles/offline/bash/.bash-user-settings.sh
