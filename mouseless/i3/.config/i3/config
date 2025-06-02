@@ -26,10 +26,10 @@ bindsym $mod+$wm_setting_key_down focus down
 bindsym $mod+$wm_setting_key_up focus up
 bindsym $mod+$wm_setting_key_right focus right
 
-bindsym $mod+Control+Left resize shrink width 10 px or 10 ppt
-bindsym $mod+Control+Down resize grow height 10 px or 10 ppt
-bindsym $mod+Control+Up resize shrink height 10 px or 10 ppt
-bindsym $mod+Control+Right resize grow width 10 px or 10 ppt
+bindsym $mod+Control+Left resize shrink width 10 px
+bindsym $mod+Control+Down resize grow height 10 px
+bindsym $mod+Control+Up resize shrink height 10 px
+bindsym $mod+Control+Right resize grow width 10 px
 
 bindsym $mod+$smod+Left move left
 bindsym $mod+$smod+Down move down
@@ -54,3 +54,6 @@ bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
+
+for_window [title="^ShortcutPopupFloating$"] floating enable
+
