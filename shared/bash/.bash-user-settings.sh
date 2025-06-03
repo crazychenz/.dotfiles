@@ -35,6 +35,10 @@ export GIT_PS1_SHOWUPSTREAM="auto"
 function git_branch {
   local git_status=$(__git_ps1 "%s")
 
+  if [ -z "$git_status" ]; then
+    return 0
+  fi
+
   if [[ "$git_status" == *"="* ]]; then
     COLOR=$COLOR_RED
   elif [[ "$git_status"·==·*"?"* ]]; then
@@ -66,17 +70,29 @@ function get_docker_ident {
 }
 export -f get_docker_ident
 
-function get_k8s_namespace() {
-  echo -e "${COLOR_LIGHT_PURPLE}KC:$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null || echo default) "
+function get_k8s_context() {
+  local context=$(kubectl config current-context 2>/dev/null)
+  if [ -z "$context" ]; then
+    return 0
+  fi
+
+  echo -e "${COLOR_LIGHT_PURPLE}KC:$context "
 }
-export -f get_k8s_namespace
+export -f get_k8s_context
+
+if [ ! -z "$(which kubectl)" ]; then
+  export KUBECONFIG=$(realpath ~)/node0.yaml
+  source <(kubectl completion bash)
+  alias kc=kubectl
+  complete -o default -F __start_kubectl kc
+fi
 
 # Note: Without \[ \] properly placed, wrapping will not work correctly.
 # More info found at: https://robotmoon.com/256-colors/
 USERHOST_PSENTRY='\[$COLOR_LIGHT_BLUE\]\u\[$COLOR_GRAY\]@\[$COLOR_GREEN\]\h '
 PS1="${debian_chroot:+($debian_chroot)}$USERHOST_PSENTRY"
 PS1="$PS1\$(get_docker_ident)"
-PS1="$PS1\$(get_k8s_namespace)"
+PS1="$PS1\$(get_k8s_context)"
 PS1="$PS1\$(git_branch)"
 PS1="$PS1\$(get_prompt_date)"
 WORKINGDIR='\[$COLOR_LIGHT_YELLOW\]\w'
@@ -101,12 +117,6 @@ if [ ! -z "$(which vivid)" ]; then
   export LS_COLORS="$(vivid generate catppuccin-mocha)"
 fi
 
-if [ ! -z "$(which kubectl)" ]; then
-  export KUBECONFIG=~/node0.yaml
-  source <(kubectl completion bash)
-  alias kc=kubectl
-  complete -o default -F __start_kubectl kc
-fi
 
 if [ ! -z "$(which zoxide)" ]; then
   eval "$(zoxide init bash)"
