@@ -134,8 +134,10 @@ fi
 #  eval "$(rg --generate complete-bash)"
 #fi
 
-if [ ! -z "\$(ldd --version | grep -i -e gnu -e glibc)" ]; then
-  export PATH=~/.local/nvim-linux64/bin:${PATH}
+if [ -z "\$(ldd --version | grep -i -e gnu -e glibc)" ]; then
+  export PATH=$(realpath ~)/.local/nvim-linux64/bin:${PATH}
+else
+  export PATH=$(realpath ~)/.local/nvim-linux64-glibc/bin:${PATH}
 fi
 
 tools() {

@@ -1157,7 +1157,7 @@ require("lazy").setup({
 			},
 
 			filesystem = {
-				follow_current_file = true,
+				follow_current_file = { enabled = true },
 				hijack_netrw_behavior = "open_default",
 				filtered_items = {
 					visible = true,
@@ -1172,7 +1172,7 @@ require("lazy").setup({
 			},
 
 			buffers = {
-				follow_current_file = true,
+				follow_current_file = { enabled = true },
 				group_empty_dirs = true,
 				show_unloaded = true,
 			},
