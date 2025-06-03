@@ -139,14 +139,18 @@ if [ ! -z "\$(ldd --version | grep -i -e gnu -e glibc)" ]; then
 fi
 
 tools() {
-  echo "tmux - terminal multiplexer"
-  echo "nvim - neovim text editor"
-  echo "lazygit - git tui"
-  echo "vivid - terminal colors (LS_COLORS)"
-  echo "kubectl | kc"
-  echo "btop - better top"
-  echo "k9s - k8s tui manager"
-  echo "kubectl get-all plugin"
-  echo "glow - markdown reader"
-  echo "yazi - file manager"
+  [ -n "$(which tmux)" ]    && echo "tmux - terminal multiplexer"
+  [ -n "$(which nvim)" ]    && echo "nvim - neovim text editor"
+  [ -n "$(which lazygit)" ] && echo "lazygit - git tui"
+  [ -n "$(which vivid)" ]   && echo "vivid - terminal colors (LS_COLORS)"
+  [ -n "$(which kubectl)" ] && echo "kubectl | kc"
+                              #echo "kubectl get-all plugin"
+  [ -n "$(which btop)" ]    && echo "btop - better top"
+  [ -n "$(which k9s)" ]     && echo "k9s - k8s tui manager"
+  [ -n "$(which glow)" ]    && echo "glow - markdown reader"
+  [ -n "$(which yazi)" ]    && echo "yazi - file manager"
+  [ -n "$(which zoxide)" ]    && echo "smart cd (i.e. change directory)"
+  [ -n "$(which uv)" ]    && echo "uv - fast rust-based python pkg mgr"
+  [ -n "$(which fzf)" ]    && echo "fzf - fuzzy finder (w/ Ctrl-T)"
+  [ -n "$(which bat)" ]    && echo "bat - cat with syntax highlighting"
 }
