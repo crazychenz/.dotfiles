@@ -13,7 +13,7 @@ cd && git clone https://github.com/crazychenz/.dotfiles.git
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Initialize user specific configurations.
-cd .dotfiles && ./install-mouseless.sh && source ~/.bash-user-settings.sh
+cd .dotfiles && ./install-mouseless.sh && bash --login
 ```
 
 
