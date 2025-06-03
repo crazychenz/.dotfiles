@@ -15,44 +15,39 @@ COLOR_GRAY="$(tput setaf 243)"
 # Inspired by:
 # https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html
 function show_colors {
-    python <<PYTHON_SCRIPT
+    python3 <<PYTHON_SCRIPT
 import sys
 for i in range(0, 16):
     for j in range(0, 16):
         code = str(i * 16 + j)
         sys.stdout.write(u"\u001b[38;5;" + code + "m " + code.ljust(4))
-    print u"\u001b[0m"
+print(u"\u001b[0m")
 PYTHON_SCRIPT
 }
 
-# Define colors for git branch/checkout depending on state.
-# Inspired by:
-# https://coderwall.com/p/pn8f0g
+export GIT_PS1_SHOWCOLORHINTS=1
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUPSTREAM="auto"
+# * dirty working, + staged, ? untracked, ! stashed
+# = even with remote, < behind remote, > ahead of remote, <> diverged
 function git_branch {
-  git rev-parse --is-inside-work-tree &> /dev/null
-  if [ "$?" -eq "0" ]; then
-    local git_status="$(git status 2> /dev/null)"
-    local on_branch="On branch ([^${IFS}]*)"
-    local on_commit="HEAD detached at ([^${IFS}]*)"
+  local git_status=$(__git_ps1 "%s")
 
-    if [[ ! $git_status =~ "working tree clean" ]]; then
-        COLOR=$COLOR_RED
-    elif [[ $git_status =~ "Your branch is ahead of" ]]; then
-        COLOR=$COLOR_YELLOW
-    elif [[ $git_status =~ "nothing to commit" ]]; then
-        COLOR=$COLOR_LIGHT_GREEN
-    else
-        COLOR=$COLOR_ORANGE
-    fi
-
-    if [[ $git_status =~ $on_branch ]]; then
-        local branch=${BASH_REMATCH[1]}
-        echo -e "$COLOR($branch) "
-    elif [[ $git_status =~ $on_commit ]]; then
-        local commit=${BASH_REMATCH[1]}
-        echo -e "$COLOR($commit) "
-    fi
+  if [[ "$git_status" == *"="* ]]; then
+    COLOR=$COLOR_RED
+  elif [[ "$git_status"·==·*"?"* ]]; then
+    COLOR=$COLOR_RED
+  elif [[ "$git_status"·==·*"+"* ]]; then
+    COLOR=$COLOR_YELLOW
+  elif [[ "$git_status"·==·*"!"* ]]; then
+    COLOR=$COLOR_YELLOW
+  else
+    COLOR=$COLOR_LIGHT_GREEN
   fi
+
+  echo -e "$COLOR($git_status) "
 }
 export -f git_branch
 
@@ -62,30 +57,34 @@ function get_prompt_date {
 }
 export -f get_prompt_date
 
-# Get docker identity. Useful for doing `docker exec`, `docker stop`, etc.
-# Note: This used to rely on /proc/1/cpuset, but with newer dockers we
-#       now rely on volume mounting the output of --cidfile from `docker run`.
-# Inspired by:
-# https://stackoverflow.com/questions/20995351
+# Used to use --cidfile and /proc/1/cpuset, but this is what GPT recommended.
 function get_docker_ident {
-    echo ""
+  if [ -f /.dockerenv ] || grep -q 'docker' /proc/1/cgroup; then
+    # Extract short container ID from /etc/hostname
+    echo -e "$COLOR_LIGHT_BROWN($(cat /etc/hostname | cut -c1-12))"
+  fi
 }
 export -f get_docker_ident
+
+function get_k8s_namespace() {
+  echo -e "${COLOR_LIGHT_PURPLE}KC:$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null || echo default) "
+}
+export -f get_k8s_namespace
 
 # Note: Without \[ \] properly placed, wrapping will not work correctly.
 # More info found at: https://robotmoon.com/256-colors/
 USERHOST_PSENTRY='\[$COLOR_LIGHT_BLUE\]\u\[$COLOR_GRAY\]@\[$COLOR_GREEN\]\h '
 PS1="${debian_chroot:+($debian_chroot)}$USERHOST_PSENTRY"
 PS1="$PS1\$(get_docker_ident)"
+PS1="$PS1\$(get_k8s_namespace)"
 PS1="$PS1\$(git_branch)"
 PS1="$PS1\$(get_prompt_date)"
 WORKINGDIR='\[$COLOR_LIGHT_YELLOW\]\w'
 PROMPT_DELIM='\[$COLOR_RESET\]\$ '
 export PS1="$PS1\n$WORKINGDIR$PROMPT_DELIM"
 
-export EDITOR=vim
+export EDITOR=nvim
 export PROMPT_COMMAND='history -a'
-eval $(ssh-agent -s)
 alias myip='curl ifconfig.me'
 
 reload_vscode_ipc() {

@@ -1,6 +1,23 @@
 # Crazychenz's `.dotfiles`
 
-Offline, All The Things, Config:
+Common Use Case, With Mouse-Free Bias:
+
+```sh
+# Install GNU Stow
+sudo apt-get install stow
+
+# Clone .dotfiles repo
+cd && git clone https://github.com/crazychenz/.dotfiles.git
+
+# Manually install Debian, Neovim 10+, LightDM, i3, and other relavent apps.
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Initialize user specific configurations.
+cd .dotfiles && ./install-mouseless.sh && source ~/.bash-user-settings.sh
+```
+
+
+Uncommon Offline Use Case:
 
 ```sh
 # Install GNU Stow
@@ -19,21 +36,6 @@ cd && ./.dotfiles/offline/collector/x64-linux_config_install.sh
 cd ./.dotfiles/offline && stow --target=$HOME * && source ~/.bash-user-settings.sh
 ```
 
-Lighter, Online, More Deliberate, Config:
-
-```sh
-# Install GNU Stow
-sudo apt-get install stow
-
-# Clone .dotfiles repo
-cd && git clone https://github.com/crazychenz/.dotfiles.git
-
-# Manually install Debian, Neovim 10+, LightDM, i3, urxvt, tmux.
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# Initialize user specific configurations.
-cd ./.dotfiles/mouseless && stow --target=$HOME * && source ~/.bash-user-settings.sh
-```
 
 
 ## Stack Includes
