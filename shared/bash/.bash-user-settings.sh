@@ -11,6 +11,7 @@ COLOR_ORANGE="$(tput setaf 208)"
 COLOR_RED="$(tput setaf 167)"
 COLOR_GRAY="$(tput setaf 243)"
 
+
 # Helper for showing colors in user specific terminal window+profile.
 # Inspired by:
 # https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html
@@ -24,6 +25,7 @@ for i in range(0, 16):
 print(u"\u001b[0m")
 PYTHON_SCRIPT
 }
+
 
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_SHOWDIRTYSTATE=1
@@ -39,27 +41,37 @@ function git_branch {
     return 0
   fi
 
-  if [[ "$git_status" == *"="* ]]; then
+  if [[ "$git_status" == *'*'* ]]; then
     COLOR=$COLOR_RED
-  elif [[ "$git_status"·==·*"?"* ]]; then
+  elif [[ "$git_status" == *'+'* ]]; then
     COLOR=$COLOR_RED
-  elif [[ "$git_status"·==·*"+"* ]]; then
+  elif [[ "$git_status" == *'%'* ]]; then
+    COLOR=$COLOR_RED
+  elif [[ "$git_status" == *'!'* ]]; then
+    COLOR=$COLOR_RED
+  elif [[ "$git_status" == *'?'* ]]; then
+    COLOR=$COLOR_RED
+  elif [[ "$git_status" == *'#'* ]]; then
     COLOR=$COLOR_YELLOW
-  elif [[ "$git_status"·==·*"!"* ]]; then
+  elif [[ "$git_status" == *'>'* ]]; then
+    COLOR=$COLOR_YELLOW
+  elif [[ "$git_status" == *'<'* ]]; then
     COLOR=$COLOR_YELLOW
   else
-    COLOR=$COLOR_LIGHT_GREEN
+    COLOR=$COLOR_LIGHT_GREEN # "=" is clean or even with remote
   fi
 
   echo -e "$COLOR($git_status) "
 }
 export -f git_branch
 
+
 # Fetch the date in a canonical format.
 function get_prompt_date {
     echo -e "$COLOR_GRAY$(date +%Y-%m-%d-%H:%M:%S)"
 }
 export -f get_prompt_date
+
 
 # Used to use --cidfile and /proc/1/cpuset, but this is what GPT recommended.
 function get_docker_ident {
@@ -69,6 +81,7 @@ function get_docker_ident {
   fi
 }
 export -f get_docker_ident
+
 
 function get_k8s_context() {
   local context=$(kubectl config current-context 2>/dev/null)
@@ -80,12 +93,14 @@ function get_k8s_context() {
 }
 export -f get_k8s_context
 
+
 if [ ! -z "$(which kubectl)" ]; then
   export KUBECONFIG=$(realpath ~)/node0.yaml
   source <(kubectl completion bash)
   alias kc=kubectl
   complete -o default -F __start_kubectl kc
 fi
+
 
 # Note: Without \[ \] properly placed, wrapping will not work correctly.
 # More info found at: https://robotmoon.com/256-colors/
@@ -99,19 +114,27 @@ WORKINGDIR='\[$COLOR_LIGHT_YELLOW\]\w'
 PROMPT_DELIM='\[$COLOR_RESET\]\$ '
 export PS1="$PS1\n$WORKINGDIR$PROMPT_DELIM"
 
+
+export PATH=~/.local/bin:$PATH
 export EDITOR=nvim
 export PROMPT_COMMAND='history -a'
 alias myip='curl ifconfig.me'
 
+
 reload_vscode_ipc() {
   export VSCODE_IPC_HOOK_CLI=$(ls -tr /run/user/$UID/vscode-ipc-* | tail -n 1)
-}; reload_vscode_ipc
+};
+shopt -s nullglob
+vscode_ipc_files=(/run/user/$UID/vscode-ipc-*)
+if (( ${#vscode_ipc_files[@]} )); then
+  reload_vscode_ipc
+fi
 
-export PATH=~/.local/bin:$PATH
 
 if [ ! -z "$(which lazygit)" ]; then
   export LG_CONFIG_FILE="$(lazygit --print-config-dir)/config.yml,$(lazygit --print-config-dir)/theme.yml"
 fi
+
 
 if [ ! -z "$(which vivid)" ]; then
   export LS_COLORS="$(vivid generate catppuccin-mocha)"
@@ -122,17 +145,21 @@ if [ ! -z "$(which zoxide)" ]; then
   eval "$(zoxide init bash)"
 fi
 
+
 if [ ! -z "$(which fzf)" ]; then
   eval "$(fzf --bash)"
 fi
+
 
 if [ ! -z "$(which bat)" ]; then
   eval "$(bat --completion bash)"
 fi
 
+
 #if [ ! -z "$(which rg)" ]; then
 #  eval "$(rg --generate complete-bash)"
 #fi
+
 
 if [ -z "\$(ldd --version | grep -i -e gnu -e glibc)" ]; then
   export PATH=$(realpath ~)/.local/nvim-linux64/bin:${PATH}
@@ -140,10 +167,11 @@ else
   export PATH=$(realpath ~)/.local/nvim-linux64-glibc/bin:${PATH}
 fi
 
+
 tools() {
   echo 'Git Prompt Legend:'
-  echo '  * - dirty working, + - staged, ? - untracked, ! - stashed'
-  echo '  = - with remote, < - behind, > - ahead, <> - diverged'
+  echo '  * - unstaged, + - staged, % - untracked, ? - conflict, ! - stashed'
+  echo '  # - off-branch, = - with remote, < - behind, > - ahead, <> - diverged'
 
   echo 'Installed Tools:'
   [ -n "$(which tmux)" ]    && echo "  tmux - terminal multiplexer"
@@ -161,3 +189,5 @@ tools() {
   [ -n "$(which fzf)" ]     && echo "  fzf - fuzzy finder (w/ Ctrl-T)"
   [ -n "$(which bat)" ]     && echo "  bat - cat with syntax highlighting"
 }
+
+
