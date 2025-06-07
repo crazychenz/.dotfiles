@@ -6,6 +6,8 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices.
 
+config.default_prog = { "powershell.exe" }
+
 -- For example, changing the initial geometry for new windows:
 config.initial_cols = 120
 config.initial_rows = 28
@@ -24,11 +26,15 @@ wezterm.on('update-right-status', function(window, pane)
   window:set_right_status(name or '')
 end)
 
-config.leader = { key="a", mods="CTRL" }
+config.leader = { key="a", mods="CTRL", timeout_milliseconds = 1000 }
 config.disable_default_key_bindings = true
 config.keys = {
 	-- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
-	{ key = "a", mods = "LEADER|CTRL",  action=wezterm.action{SendString="\x01"}},
+	{ 
+	  key = "a",
+	  mods = "LEADER|CTRL",
+	  action = wezterm.action.SendKey { mods = 'CTRL', key = 'a' }
+	},
 	
 	-- LEADER then 'r' for resize-pane mode.
     { key = 'r', mods = 'LEADER', action = wezterm.action.ActivateKeyTable { name = 'resize_pane', one_shot = false, }, },
