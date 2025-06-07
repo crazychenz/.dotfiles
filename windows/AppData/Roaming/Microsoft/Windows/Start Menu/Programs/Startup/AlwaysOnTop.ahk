@@ -45,23 +45,51 @@ return
 ;{Media_Next}
 ;{Media_Prev}
 
-#1::SendInput {Blind}{#1}
-#2::SendEvent {Blind}{#2}
-#3::SendPlay {Blind}{#3}
+#1::Send {Blind}{#1}
+#2::Send {Blind}{#2}
+#3::Send {Blind}{#3}
 #4::Send {Blind}{#4}
 #5::Send {Blind}{#5}
 #6::Send {Blind}{#6}
 #7::Send {Blind}{#7}
 #8::Send {Blind}{#8}
 #9::Send {Blind}{#9}
+
+#v::Send {Blind}{#v}
+#t::Send {Blind}{#t}
+#m::Send {Blind}{#m}
+#f::Send {Blind}{#f}
+
+#Enter::Send {Blind}{#Enter}
+
 #Left::Send {Blind}{#Left}
 #Right::Send {Blind}{#Right}
 #Up::Send {Blind}{#Up}
 #Down::Send {Blind}{#Down}
+
+#+1::Send {Blind}{#+1}
+#+2::Send {Blind}{#+2}
+#+3::Send {Blind}{#+3}
+#+4::Send {Blind}{#+4}
+#+5::Send {Blind}{#+5}
+#+6::Send {Blind}{#+6}
+#+7::Send {Blind}{#+7}
+#+8::Send {Blind}{#+8}
+#+9::Send {Blind}{#+9}
+
+#+e::Send {Blind}{#+e}
+#+r::Send {Blind}{#+r}
+#+w::Send {Blind}{#+w}
+#+q::Send {Blind}{#+q}
+#+c::Send {Blind}{#+c}
+#+p::Send {Blind}{#+p}
+#+b::Send {Blind}{#+b}
+
 #+Left::Send {Blind}{#+Left}
 #+Right::Send {Blind}{#+Right}
 #+Up::Send {Blind}{#+Up}
 #+Down::Send {Blind}{#+Down}
+
 #^Left::Send {Blind}{#^Left}
 #^Right::Send {Blind}{#^Right}
 #^Up::Send {Blind}{#^Up}
