@@ -2,7 +2,10 @@ general:
   # Commands to run when the WM has started. This is useful for running a
   # script or launching another application.
   # Example: The below command launches Zebar.
-  startup_commands: ['shell-exec zebar']
+  startup_commands: 
+    - 'shell-exec zebar'
+    # - 'shell-exec chrome.exe --profile-directory="Default"'
+    # - 'shell-exec wezterm-gui' 
 
   # Commands to run just before the WM is shutdown.
   # Example: The below command kills Zebar.
@@ -119,18 +122,33 @@ window_behavior:
       # Whether to show fullscreen windows as always on top.
       shown_on_top: false
 
+
 workspaces:
   - name: '1'
   - name: '2'
   - name: '3'
+    display_name: "Code"
+    bind_to_monitor: 0
   - name: '4'
+    display_name: "Extra"
+    bind_to_monitor: 1
   - name: '5'
   - name: '6'
   - name: '7'
   - name: '8'
   - name: '9'
 
+
 window_rules:
+  # - commands: ["move --workspace 3"]
+    # match:
+      # # Move browsers to workspace 1.
+      # - window_process: { regex: "msedge|brave|chrome" }
+
+  # - commands: ["move --workspace 4"]
+    # match:
+      # - window_process: { regex: "VirtualBox|Spotify" }
+
   - commands: ['ignore']
     match:
       # Ignores any Zebar windows.
@@ -164,7 +182,6 @@ binding_modes:
       - commands: ['wm-disable-binding-mode --name resize']
         bindings: ['escape', 'enter']
 
-mod: alt
 keybindings:
   # Shift focus in a given direction.
   - commands: ['focus --direction left']
@@ -205,12 +222,12 @@ keybindings:
   # Disables window management and all other keybindings until alt+shift+p
   # is pressed again.
   - commands: ['wm-toggle-pause']
-    bindings: ['alt+shift+p']
+    bindings: ['alt+shift+p', 'lwin+shift+p']
 
   # Change tiling direction. This determines where new tiling windows will
   # be inserted.
   - commands: ['toggle-tiling-direction']
-    bindings: ['alt+v']
+    bindings: ['alt+v', 'lwin+v']
 
   # Change focus from tiling windows -> floating -> fullscreen.
   - commands: ['wm-cycle-focus']
@@ -222,37 +239,43 @@ keybindings:
 
   # Change the focused window to be tiling.
   - commands: ['toggle-tiling']
-    bindings: ['alt+t']
+    bindings: ['alt+t', 'lwin+t']
 
   # Change the focused window to be fullscreen.
   - commands: ['toggle-fullscreen']
-    bindings: ['alt+f']
+    bindings: ['alt+f', 'lwin+f']
 
   # Minimize focused window.
   - commands: ['toggle-minimized']
-    bindings: ['alt+m']
+    bindings: ['alt+m', 'lwin+m']
 
   # Close focused window.
   - commands: ['close']
-    bindings: ['alt+shift+q']
+    bindings: ['alt+shift+q', 'lwin+shift+q']
 
   # Kill GlazeWM process safely.
   - commands: ['wm-exit']
-    bindings: ['alt+shift+e']
+    bindings: ['alt+shift+e', 'lwin+shift+e']
 
   # Re-evaluate configuration file.
   - commands: ['wm-reload-config']
-    bindings: ['alt+shift+r']
+    bindings: ['alt+shift+r', 'lwin+shift+r']
 
   # Redraw all windows.
   - commands: ['wm-redraw']
-    bindings: ['alt+shift+w']
+    bindings: ['alt+shift+w', 'lwin+shift+w']
 
   # Launch CMD terminal. Alternatively, use `shell-exec wt` or
   # `shell-exec %ProgramFiles%/Git/git-bash.exe` to start Windows
   # Terminal and Git Bash respectively.
-  - commands: ['shell-exec cmd']
-    bindings: ['alt+enter']
+  
+  # Open Console with Win+Enter
+  - commands: ['shell-exec wezterm-gui']
+    bindings: ['alt+enter', 'lwin+enter']
+  
+  # Open Browser with Win+Shift+b
+  - commands: ['shell-exec wezterm-gui']
+    bindings: ['alt+enter', 'lwin+shift+b']
 
   # Focus the next/previous active workspace defined in `workspaces` config.
   - commands: ['focus --next-active-workspace']
@@ -297,20 +320,20 @@ keybindings:
 
   # Move focused window to a workspace defined in `workspaces` config.
   - commands: ['move --workspace 1', 'focus --workspace 1']
-    bindings: ['alt+shift+1']
+    bindings: ['alt+shift+1', 'lwin+shift+1']
   - commands: ['move --workspace 2', 'focus --workspace 2']
-    bindings: ['alt+shift+2']
+    bindings: ['alt+shift+2', 'lwin+shift+2']
   - commands: ['move --workspace 3', 'focus --workspace 3']
-    bindings: ['alt+shift+3']
+    bindings: ['alt+shift+3', 'lwin+shift+3']
   - commands: ['move --workspace 4', 'focus --workspace 4']
-    bindings: ['alt+shift+4']
+    bindings: ['alt+shift+4', 'lwin+shift+4']
   - commands: ['move --workspace 5', 'focus --workspace 5']
-    bindings: ['alt+shift+5']
+    bindings: ['alt+shift+5', 'lwin+shift+5']
   - commands: ['move --workspace 6', 'focus --workspace 6']
-    bindings: ['alt+shift+6']
+    bindings: ['alt+shift+6', 'lwin+shift+6']
   - commands: ['move --workspace 7', 'focus --workspace 7']
-    bindings: ['alt+shift+7']
+    bindings: ['alt+shift+7', 'lwin+shift+7']
   - commands: ['move --workspace 8', 'focus --workspace 8']
-    bindings: ['alt+shift+8']
+    bindings: ['alt+shift+8', 'lwin+shift+8']
   - commands: ['move --workspace 9', 'focus --workspace 9']
-    bindings: ['alt+shift+9']
+    bindings: ['alt+shift+9', 'lwin+shift+9']
