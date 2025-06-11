@@ -1,0 +1,4 @@
+[submodule "binaries"]
+	path = binaries
+	url = git@git.vinnie.work:chenz/dotfile-binaries.git
+	branch = main
