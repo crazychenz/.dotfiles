@@ -23,7 +23,7 @@ general:
 
   cursor_jump:
     # Whether to automatically move the cursor on the specified trigger.
-    enabled: true
+    enabled: false
 
     # Trigger for cursor jump:
     # - 'monitor_focus': Jump when focus changes between monitors.
@@ -157,6 +157,21 @@ window_rules:
       # Ignores picture-in-picture windows for browsers.
       - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
         window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
+      
+      - window_title: { regex: 'WinSpy' }
+      
+      - window_title: { regex: 'DEBUG' }
+      
+      - window_class: { regex: 'Engine' }
+      - window_title: { regex: 'Mockey' }
+      - window_title: { regex: 'Godot Engine' }
+      - window_title: { regex: 'Create New Node' }
+      - window_title: { regex: 'Load Errors' }
+      - window_title: { regex: 'Search Help' }
+      - window_title: { regex: 'Please Confirm' }
+      - window_title: { regex: 'Export Template Manager' }
+      
+      - window_title: { regex: 'VirtualBox Manager' }
 
       # Ignore rules for various 3rd-party apps.
       - window_process: { equals: 'PowerToys' }
