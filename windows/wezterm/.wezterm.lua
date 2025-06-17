@@ -17,6 +17,7 @@ config.font_size = 10
 config.color_scheme = "Catppuccin Mocha"
 config.hide_tab_bar_if_only_one_tab = true
 config.audible_bell = "Disabled"
+config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
 wezterm.on('update-right-status', function(window, pane)
   local name = window:active_key_table()
