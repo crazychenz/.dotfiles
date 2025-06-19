@@ -58,7 +58,7 @@ MButton::
 #+9::Send("{Blind}{#+9}")
 
 #+e::Send("{Blind}{#+e}")
-#+r::Send("{Blind}{#+r}")
+;#+r::Send("{Blind}{#+r}")
 #+w::Send("{Blind}{#+w}")
 #+q::Send("{Blind}{#+q}")
 #+c::Send("{Blind}{#+c}")
@@ -97,5 +97,27 @@ MButton::
     {
         Run(appPath)
     }
+}
+
+#+r::  ; Win + Shift + R
+{
+    processName := "glazewm.exe"
+    exePath := "C:\Program Files\glzr.io\GlazeWM\glazewm.exe"
+
+    ; Kill the process
+    ProcessClose(processName)
+
+    ; Optional: Wait until it fully exits
+    Loop
+    {
+        if !ProcessExist(processName)
+            break
+        Sleep(200)
+    }
+
+    ; Restart the process
+    Run exePath
+
+    return
 }
 
