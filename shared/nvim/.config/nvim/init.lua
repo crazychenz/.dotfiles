@@ -931,6 +931,9 @@ require("lazy").setup({
 		lazy = false,
 		priority = 1000,
 		config = function()
+			require("kanagawa").setup({
+				transparent = true,
+			})
 			local uv = vim.loop -- Neovim's libuv wrapper
 			local light_theme_path = vim.fn.expand("~/.light_theme")
 			local file_exists = uv.fs_stat(light_theme_path) ~= nil
