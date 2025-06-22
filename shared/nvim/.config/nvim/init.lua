@@ -931,7 +931,22 @@ require("lazy").setup({
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme("kanagawa-dragon")
+			local uv = vim.loop -- Neovim's libuv wrapper
+			local light_theme_path = vim.fn.expand("~/.light_theme")
+			local file_exists = uv.fs_stat(light_theme_path) ~= nil
+			if file_exists then
+				vim.o.background = "light"
+				vim.cmd.colorscheme("kanagawa-lotus")
+				vim.api.nvim_set_hl(0, "CursorColumn", { bg = "#dddddd", ctermbg = 0 })
+				vim.api.nvim_set_hl(0, "CursorLine", { bg = "#dddddd", underline = false })
+				vim.api.nvim_set_hl(0, "Whitespace", { fg = "#bcbcbc", ctermfg = 8 })
+			else
+				vim.o.background = "dark"
+				vim.cmd.colorscheme("kanagawa-dragon")
+				vim.api.nvim_set_hl(0, "CursorColumn", { bg = "#0c0c0c", ctermbg = 0 })
+				vim.api.nvim_set_hl(0, "CursorLine", { bg = "#0c0c0c", underline = false })
+				vim.api.nvim_set_hl(0, "Whitespace", { fg = "#2c2c2c", ctermfg = 8 })
+			end
 		end,
 	},
 
@@ -1030,7 +1045,7 @@ require("lazy").setup({
 				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
 				additional_vim_regex_highlighting = { "ruby" },
 			},
-			indent = { enable = true, disable = { "ruby" } },
+			indent = { enable = false, disable = { "ruby" } },
 		},
 		-- There are additional nvim-treesitter modules that you can use to interact
 		-- with nvim-treesitter. You should go explore a few and see what interests you:
@@ -1216,8 +1231,6 @@ require("lazy").setup({
 --})
 
 -- Putting this after the theme plugin.
-vim.api.nvim_set_hl(0, "CursorColumn", { bg = "#0c0c0c", ctermbg = 0 })
-vim.api.nvim_set_hl(0, "CursorLine", { bg = "#0c0c0c", underline = false })
 vim.opt.cursorcolumn = true
 vim.opt.cursorline = true
 vim.opt.tabstop = 2
@@ -1228,4 +1241,7 @@ vim.opt.termguicolors = true
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
-vim.api.nvim_set_hl(0, "Whitespace", { fg = "#2c2c2c", ctermfg = 8 })
+vim.cmd("filetype indent off")
+vim.opt.smartindent = false
+vim.opt.cindent = false
+vim.opt.indentexpr = ""

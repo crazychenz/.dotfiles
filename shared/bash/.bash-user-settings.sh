@@ -1,16 +1,28 @@
-# Configure aliases fpr the terminal colors.
-COLOR_LIGHT_BROWN="$(tput setaf 178)"
-COLOR_LIGHT_PURPLE="$(tput setaf 135)"
-COLOR_LIGHT_BLUE="$(tput setaf 87)"
-COLOR_LIGHT_GREEN="$(tput setaf 78)"
-COLOR_LIGHT_YELLOW="$(tput setaf 229)"
-COLOR_YELLOW="$(tput setaf 184)"
 COLOR_RESET="$(tput sgr0)"
-COLOR_GREEN="$(tput setaf 83)"
-COLOR_ORANGE="$(tput setaf 208)"
-COLOR_RED="$(tput setaf 167)"
-COLOR_GRAY="$(tput setaf 243)"
-
+if [ -e "$(realpath ~)/.light_theme" ]; then
+  COLOR_LIGHT_BROWN="$(tput setaf 178)"
+  COLOR_LIGHT_PURPLE="$(tput setaf 90)"
+  COLOR_LIGHT_BLUE="$(tput setaf 61)"
+  COLOR_LIGHT_GREEN="$(tput setaf 70)"
+  COLOR_LIGHT_YELLOW="$(tput setaf 94)"
+  COLOR_YELLOW="$(tput setaf 184)"
+  COLOR_GREEN="$(tput setaf 64)"
+  COLOR_ORANGE="$(tput setaf 208)"
+  COLOR_RED="$(tput setaf 196)"
+  COLOR_GRAY="$(tput setaf 243)"
+else
+  # Configure aliases fpr the terminal colors.
+  COLOR_LIGHT_BROWN="$(tput setaf 178)"
+  COLOR_LIGHT_PURPLE="$(tput setaf 135)"
+  COLOR_LIGHT_BLUE="$(tput setaf 87)"
+  COLOR_LIGHT_GREEN="$(tput setaf 78)"
+  COLOR_LIGHT_YELLOW="$(tput setaf 229)"
+  COLOR_YELLOW="$(tput setaf 184)"
+  COLOR_GREEN="$(tput setaf 83)"
+  COLOR_ORANGE="$(tput setaf 208)"
+  COLOR_RED="$(tput setaf 167)"
+  COLOR_GRAY="$(tput setaf 243)"
+fi
 
 # Helper for showing colors in user specific terminal window+profile.
 # Inspired by:
@@ -114,6 +126,11 @@ WORKINGDIR='\[$COLOR_LIGHT_YELLOW\]\w'
 PROMPT_DELIM='\[$COLOR_RESET\]\$ '
 export PS1="$PS1\n$WORKINGDIR$PROMPT_DELIM"
 
+if [ -e "$(realpath ~)/.light_theme" ]; then
+  echo -e '\e]12;#004400\a'
+else
+  echo -e '\e]12;#ffd787\a'
+fi
 
 export PATH=~/.local/bin:$PATH
 export EDITOR=nvim
@@ -137,7 +154,11 @@ fi
 
 
 if [ ! -z "$(which vivid)" ]; then
-  export LS_COLORS="$(vivid generate catppuccin-mocha)"
+  if [ -e "$(realpath ~)/.light_theme" ]; then
+    export LS_COLORS="$(vivid generate catppuccin-latte)"
+  else
+    export LS_COLORS="$(vivid generate catppuccin-mocha)"
+  fi
 fi
 
 
