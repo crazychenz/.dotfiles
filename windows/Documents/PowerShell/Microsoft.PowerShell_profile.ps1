@@ -141,8 +141,8 @@ function Set-DarkMode {
 
 	# Set system dark mode, but let the user reset explorer if it matters.
 	# Resetting explorer each time we start pwsh seems a bit much.
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme" -Value 1
-    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "SystemUsesLightTheme" -Value 1
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme" -Value 0
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "SystemUsesLightTheme" -Value 0
 	# TODO: Consider checking value before restarting?
     #Stop-Process -Name explorer -Force
     #Start-Process explorer.exe
