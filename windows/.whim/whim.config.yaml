@@ -1,0 +1,165 @@
+# yaml-language-server: $schema=C:\Users\agrie\AppData\Local\Programs\Whim\plugins\Whim.Yaml\schema.json
+workspaces:
+  entries:
+    - name: Primary
+    - name: Extra
+    - name: Media
+    - name: DesktopVM
+
+layout_engines:
+  entries:
+    - type: tree
+      initial_direction: right
+
+    - type: slice
+      variant:
+        type: row
+
+    - type: slice
+      variant:
+        type: column
+
+    - type: slice
+      variant:
+        type: primary_stack
+
+    - type: slice
+      variant:
+        type: secondary_primary_stack
+
+    - type: slice
+      variant:
+        type: multi_column_stack
+        columns: [2, 1, 0]
+
+    - type: slice
+      variant:
+        type: secondary_primary_stack
+        primary_capacity: 1
+        secondary_capacity: 2
+
+    - type: focus
+      maximize: false
+
+    - type: floating
+
+keybinds:
+  entries:
+    - command: whim.core.focus_window_in_direction.left
+      keybind: LWin+Left
+    - command: whim.core.focus_window_in_direction.right
+      keybind: LWin+Right
+    - command: whim.core.focus_window_in_direction.up
+      keybind: LWin+Up
+    - command: whim.core.focus_window_in_direction.down
+      keybind: LWin+Down
+
+    - command: whim.core.move_window_left_edge_left
+      keybind: LWin+LCtrl+Left
+    - command: whim.core.move_window_right_edge_right
+      keybind: LWin+LCtrl+Right
+    - command: whim.core.move_window_top_edge_up
+      keybind: LWin+LCtrl+Up
+    - command: whim.core.move_window_bottom_edge_down
+      keybind: LWin+LCtrl+Down
+    
+    - command: whim.core.activate_workspace_1
+      keybind: LWin+1
+    - command: whim.core.activate_workspace_2
+      keybind: LWin+2
+    - command: whim.core.activate_workspace_3
+      keybind: LWin+3
+    - command: whim.core.activate_workspace_4
+      keybind: LWin+4
+    - command: whim.core.activate_workspace_5
+      keybind: LWin+5
+     
+    - command: whim.core.swap_window_in_direction.left
+      keybind: LWin+LShift+Left
+    - command: whim.core.swap_window_in_direction.right
+      keybind: LWin+LShift+Right
+    - command: whim.core.swap_window_in_direction.up
+      keybind: LWin+LShift+Up
+    - command: whim.core.swap_window_in_direction.down
+      keybind: LWin+LShift+Down
+     
+    - command: whim.core.activate_previous_workspace
+      keybind: LWin+RAlt+RCtrl+P
+    - command: whim.core.activate_next_workspace
+      keybind: LWin+RAlt+RCtrl+P
+    - command: whim.core.move_window_to_previous_monitor
+      keybind: LWin+RAlt+RCtrl+P
+    - command: whim.core.move_window_to_next_monitor
+      keybind: LWin+RAlt+RCtrl+P
+    
+    - command: whim.command_palette.toggle
+      keybind: LWin+LShift+P
+    
+    
+    - command: whim.core.restart_whim
+      keybind: LWin+LShift+R
+    - command: whim.core.exit_whim
+      keybind: LWin+Lshift+E
+
+    - command: whim.core.focus_next_monitor
+      keybind: LCtrl+LAlt+Right
+    - command: whim.core.focus_previous_monitor
+      keybind: LCtrl+LAlt+Left
+
+  unify_key_modifiers: false
+
+filters:
+  entries: []
+
+routers:
+  routing_behavior: route_to_launched_workspace
+
+plugins:
+  bar:
+    left_components:
+      entries:
+        - type: workspace_widget
+
+    center_components:
+      entries:
+        - type: focused_window_widget
+          shorten_title: true
+
+    right_components:
+      entries:
+        - type: battery_widget
+        - type: active_layout_widget
+        - type: date_time_widget
+          format: HH:mm:ss, dd MMM yyyy
+        - type: tree_layout_widget
+
+  floating_window:
+    is_enabled: true
+
+  gaps:
+    is_enabled: true
+    outer_gap: 4
+    inner_gap: 4
+    default_outer_delta: 2
+    default_inner_delta: 2
+
+  command_palette:
+    is_enabled: true
+    max_height_percent: 40
+    max_width_pixels: 800
+    y_position_percent: 20
+
+  focus_indicator:
+    is_enabled: true
+    border_size: 2
+    is_fade_enabled: true
+    fade_timeout: 2
+    color: coral
+
+  layout_preview:
+    is_enabled: true
+
+  updater:
+    is_enabled: true
+    release_channel: alpha
+    update_frequency: monthly
