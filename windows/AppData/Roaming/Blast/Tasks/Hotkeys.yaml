@@ -1,0 +1,210 @@
+name: Hotkeys
+description: No description
+enable: true
+iconGlyph: 
+icon:
+  value: 
+taskProjectSettings:
+  id: b2ce45a9-dec0-4399-b685-1eaad2a185e6
+  showSettingPage: false
+  projectSettings: []
+zoom: 0.6944444444444448
+offsetX: 0
+offsetY: 0
+children:
+- id: 0
+  type: Search
+  model:
+    searchPrefix: ''
+    searchedTagExact: hk
+    searchTagIcon:
+      value: 
+    searchedText:
+      text: '*'
+      textMatchType: Wildcard
+      matchCase: false
+    searchType: SearchAll
+  version: 1.0.0.0
+  position:
+    x: 528
+    y: 1362
+  variables:
+  - name: searchText
+    value: result.SearchedText
+  - name: searchTag
+    value: result.SearchedTag
+  children:
+  - id: 1
+    type: Read file text
+    model:
+      filePath: C:\bin\hotkeys.json
+    version: 1.0.0.0
+    position:
+      x: 723
+      y: 1576
+    variables:
+    - name: fileContent
+      value: result
+    children:
+    - id: 2
+      type: Parse JSON
+      model:
+        propertyNameCaseInsensitive: false
+        jsonContent: '{{fileContent}}'
+      version: 1.0.0.0
+      position:
+        x: 765
+        y: 1358
+      variables:
+      - name: json
+        value: result
+      children:
+      - id: 3
+        type: For each
+        model:
+          inputVariable: '{json}'
+        version: 1.0.0.0
+        position:
+          x: 1005
+          y: 1359
+        variables:
+        - name: item
+          value: result
+        children:
+        - id: 4
+          type: C# Script
+          model:
+            enableVariableInline: false
+            content: >-
+              if (searchText == null || searchText.Length == 0) return true;
+
+              var needle = searchText.ToLowerInvariant();
+
+              var haystack = item.ToString().ToLowerInvariant();
+
+
+              // Compare token similarity.
+
+              int matches = 0;
+
+              var searchTokens = needle.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+              foreach (string st in searchTokens)
+
+              {
+                  foreach (string tt in haystack.Split(' ', StringSplitOptions.RemoveEmptyEntries))
+                  {
+                  	// Compare each token's character similarity.
+                  	int charMatches = 0;
+              		for (int i = 0; i < st.Length; i++)
+              		{
+                  		if (tt.Contains(st[i]))
+                  		{
+                      		charMatches++;
+                  		}
+              		}
+
+                      if (tt.Contains(st) || st.Contains(tt) || (charMatches / st.Length >= 0.7))
+                      {
+                          matches++;
+                          break;
+                      }
+                  }
+              }
+
+              if (matches / searchTokens.Length > 0.5) return true;
+
+              return haystack.Contains(needle);
+          version: 1.0.0.0
+          position:
+            x: 1215
+            y: 1358
+          variables:
+          - name: matches
+            value: result
+          children:
+          - id: 5
+            type: Condition
+            model:
+              value: '{matches}'
+              continueIfTrue: true
+            version: 1.0.0.0
+            position:
+              x: 1416
+              y: 1359
+            variables:
+            - name: myvar
+              value: result
+            children:
+            - id: 6
+              type: Custom result
+              model:
+                uniqueId: ae5dedf1-f1b1-478f-9139-e1eb6cd8b7de
+                name: '{item}'
+                previewImageProviderSetting:
+                  value: 
+                type: Custom
+                group: ''
+                score: 3
+                disabledMachineLearning: false
+                allowPinning: false
+                useChildResults: false
+                autoPreview: false
+                informationElements: []
+              version: 1.0.0.0
+              position:
+                x: 1628
+                y: 1361
+              variables:
+              - name: myvar
+                value: result
+              children: []
+              comment: ''
+            comment: ''
+          comment: ''
+        comment: ''
+      comment: ''
+    comment: ''
+  comment: ''
+- id: 7
+  type: Custom result
+  version: 1.0.0.0
+  position:
+    x: 1264
+    y: 1398
+  variables:
+  - name: myvar
+    value: result
+  children: []
+  comment: ''
+- id: 8
+  type: Set context
+  version: 1.0.0.0
+  position:
+    x: 1264
+    y: 1398
+  variables:
+  - name: myvar
+    value: result
+  children: []
+  comment: ''
+- id: 3
+  version: 1.0.0.0
+  comment: ''
+- id: 9
+  type: C# Script
+  version: 1.0.0.0
+  position:
+    x: 1245
+    y: 1357
+  variables:
+  - name: csharpScriptResult
+    value: result
+  children: []
+  comment: ''
+- id: 4
+  version: 1.0.0.0
+  comment: ''
+- id: 5
+  version: 1.0.0.0
+  comment: ''
