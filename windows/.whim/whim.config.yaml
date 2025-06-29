@@ -5,6 +5,8 @@ workspaces:
     - name: Extra
     - name: Media
     - name: DesktopVM
+    - name: Scenic-1
+    - name: Scenic-2
 
 layout_engines:
   entries:
@@ -73,6 +75,8 @@ keybinds:
       keybind: LWin+4
     - command: whim.core.activate_workspace_5
       keybind: LWin+5
+    - command: whim.core.activate_workspace_6
+      keybind: LWin+6
      
     - command: whim.core.swap_window_in_direction.left
       keybind: LWin+LShift+Left
@@ -109,7 +113,13 @@ keybinds:
   unify_key_modifiers: false
 
 filters:
-  entries: []
+  entries:
+  - type: process_file_name
+    value: FluentSearch.exe
+  - type: title
+    value: Window Spy for AHKv2
+  - type: window_class
+    value: TaskManagerWindow
 
 routers:
   routing_behavior: route_to_launched_workspace
@@ -151,9 +161,9 @@ plugins:
 
   focus_indicator:
     is_enabled: true
-    border_size: 2
+    border_size: 4
     is_fade_enabled: true
-    fade_timeout: 2
+    fade_timeout: 5
     color: coral
 
   layout_preview:
