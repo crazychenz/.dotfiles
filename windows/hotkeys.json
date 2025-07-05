@@ -191,7 +191,7 @@
  "wezterm Copy [ Ctrl C ]",
  "wezterm Increase Font Size [ Ctrl Shift + ]",
  "wezterm Decrease Font Size [ Ctrl Shift - ]",
- "wezterm Reset Font Size [ Ctrl Shift 0 ]"
+ "wezterm Reset Font Size [ Ctrl Shift 0 ]",
 
  "vimium Help Floater [ ? ]",
  "vimium Omnibar (YouTube) [ o y ]",
