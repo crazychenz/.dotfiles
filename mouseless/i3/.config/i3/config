@@ -2,7 +2,7 @@
 set $mod Mod4
 set $smod Shift
 
-bindsym &mod+l exec i3lock
+bindsym $mod+l exec i3lock
 bindsym $mod+Return exec wezterm
 bindsym $mod+$smod+Return exec zen
 bindsym $mod+d exec dmenu_run
@@ -19,10 +19,10 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-bindsym $mod+Control+Left resize shrink width 10 px
-bindsym $mod+Control+Down resize grow height 10 px
-bindsym $mod+Control+Up resize shrink height 10 px
-bindsym $mod+Control+Right resize grow width 10 px
+bindsym $mod+Control+Left resize shrink width 50 px
+bindsym $mod+Control+Down resize grow height 50 px
+bindsym $mod+Control+Up resize shrink height 50 px
+bindsym $mod+Control+Right resize grow width 50 px
 
 bindsym $mod+$smod+Left move left
 bindsym $mod+$smod+Down move down
