@@ -2,9 +2,9 @@
 workspaces:
   entries:
     - name: Primary
-    - name: Extra
+    - name: Social
     - name: Media
-    - name: DesktopVM
+    - name: Linux
     - name: Scenic-1
     - name: Scenic-2
 
@@ -55,6 +55,15 @@ keybinds:
       keybind: LWin+Up
     - command: whim.core.focus_window_in_direction.down
       keybind: LWin+Down
+      
+    #- command: whim.core.focus_window_in_direction.left
+    #  keybind: LAlt+LShift+Left
+    #- command: whim.core.focus_window_in_direction.right
+    #  keybind: LAlt+LShift+Right
+    #- command: whim.core.focus_window_in_direction.up
+    #  keybind: LAlt+LShift+Up
+    #- command: whim.core.focus_window_in_direction.down
+    #  keybind: LAlt+LShift+Down
 
     - command: whim.core.move_window_left_edge_left
       keybind: LWin+LCtrl+Left
@@ -66,17 +75,30 @@ keybinds:
       keybind: LWin+LCtrl+Down
     
     - command: whim.core.activate_workspace_1
-      keybind: LWin+1
+      keybind: Win+1
     - command: whim.core.activate_workspace_2
-      keybind: LWin+2
+      keybind: Win+2
     - command: whim.core.activate_workspace_3
-      keybind: LWin+3
+      keybind: Win+3
     - command: whim.core.activate_workspace_4
-      keybind: LWin+4
+      keybind: Win+4
     - command: whim.core.activate_workspace_5
-      keybind: LWin+5
+      keybind: Win+5
     - command: whim.core.activate_workspace_6
-      keybind: LWin+6
+      keybind: Win+6
+     
+    #- command: whim.core.activate_workspace_1
+    #  keybind: LAlt+LShift+1
+    #- command: whim.core.activate_workspace_2
+    #  keybind: LAlt+LShift+2
+    #- command: whim.core.activate_workspace_3
+    #  keybind: LAlt+LShift+3
+    #- command: whim.core.activate_workspace_4
+    #  keybind: LAlt+LShift+4
+    #- command: whim.core.activate_workspace_5
+    #  keybind: LAlt+LShift+5
+    #- command: whim.core.activate_workspace_6
+    #  keybind: LAlt+LShift+6
      
     - command: whim.core.swap_window_in_direction.left
       keybind: LWin+LShift+Left
