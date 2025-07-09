@@ -121,3 +121,20 @@ MButton::
     return
 }
 
+; Useful when an application is hidden by another process.
+; Use "ahk_exe chrome.exe" or whatever process to recover.
+; Also works with PIDs via "ahk_pid 54334".
+A_TrayMenu.Add("Recover Hidden Window", RecoverHiddenWindow)
+RecoverHiddenWindow(*) {
+  ;MsgBox("About to show InputBox...")
+  result := InputBox("Identifier (ahk_pid ARG or ahk_exe ARG or TITLE):", "Show Window")
+  ;MsgBox("InputBox done.")
+  if (result.Result == "OK" && result.Value != "") {
+    if WinExist(result.Value) {
+	  WinShow(result.Value)
+	  WinActivate(result.Value)
+	  WinRestore(result.Value)
+	}
+  }
+}
+
