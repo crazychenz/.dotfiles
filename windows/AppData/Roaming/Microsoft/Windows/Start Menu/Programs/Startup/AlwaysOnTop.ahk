@@ -29,126 +29,38 @@ MButton::
     DllCall("LockWorkStation")
 }
 
-; Windows key passthroughs (with Blind modifier)
-;#1::Send("{Blind}{#1}")
-;#2::Send("{Blind}{#2}")
-;#3::Send("{Blind}{#3}")
-;#4::Send("{Blind}{#4}")
-;#5::Send("{Blind}{#5}")
-;#6::Send("{Blind}{#6}")
-;#7::Send("{Blind}{#7}")
-;#8::Send("{Blind}{#8}")
-;#9::Send("{Blind}{#9}")
+; ------------------- Jump To Desktop ----------------------
 
-;#v::Send("{Blind}{#v}")
-;#t::Send("{Blind}{#t}")
-;#m::Send("{Blind}{#m}")
-;#f::Send("{Blind}{#f}")
-;#Enter::Send("{Blind}{#Enter}")
+; Hotkeys to jump to specific desktops (Win + Number)
+#1::GoToDesktopNumber(1)
+#2::GoToDesktopNumber(2)
+#3::GoToDesktopNumber(3)
+#4::GoToDesktopNumber(4)
+#5::GoToDesktopNumber(5)
+#6::GoToDesktopNumber(6)
+#7::GoToDesktopNumber(7)
+#8::GoToDesktopNumber(8)
+#9::GoToDesktopNumber(9)
 
-;#Left::Send("{Blind}{#Left}")
-;#Right::Send("{Blind}{#Right}")
-;#Up::Send("{Blind}{#Up}")
-;#Down::Send("{Blind}{#Down}")
+hVirtualDesktopAccessor := DllCall("LoadLibrary", "Str", "C:\bin\VirtualDesktopAccessor.dll", "Ptr")
 
-;#+1::Send("{Blind}{#+1}")
-;#+2::Send("{Blind}{#+2}")
-;#+3::Send("{Blind}{#+3}")
-;#+4::Send("{Blind}{#+4}")
-;#+5::Send("{Blind}{#+5}")
-;#+6::Send("{Blind}{#+6}")
-;#+7::Send("{Blind}{#+7}")
-;#+8::Send("{Blind}{#+8}")
-;#+9::Send("{Blind}{#+9}")
+GoToDesktopNumberProc := DllCall("GetProcAddress", "Ptr", hVirtualDesktopAccessor, "AStr", "GoToDesktopNumber", "Ptr")
 
-;#+e::Send("{Blind}{#+e}")
-;;#+r::Send("{Blind}{#+r}")
-;#+w::Send("{Blind}{#+w}")
-;#+q::Send("{Blind}{#+q}")
-;#+c::Send("{Blind}{#+c}")
-;#+p::Send("{Blind}{#+p}")
-;#+b::Send("{Blind}{#+b}")
-
-;#+Left::Send("{Blind}{#+Left}")
-;#+Right::Send("{Blind}{#+Right}")
-;#+Up::Send("{Blind}{#+Up}")
-;#+Down::Send("{Blind}{#+Down}")
-
-;#^Left::Send("{Blind}{#^Left}")
-;#^Right::Send("{Blind}{#^Right}")
-;#^Up::Send("{Blind}{#^Up}")
-;#^Down::Send("{Blind}{#^Down}")
-
-; F1: toggle or launch "Mockey"
-;#F1::
-;{
-;    DetectHiddenWindows(true)
-;    winTitle := "Mockey"
-;    appPath := "F:\godot_projects\mockey\Mockey.exe"
-;
-;    if WinExist(winTitle)
-;    {
-;        if WinActive(winTitle) {
-;            WinHide(winTitle)
-;            WinActivate("ahk_class Progman")
-;        }
-;        else {
-;            WinShow(winTitle)
-;            WinActivate(winTitle)
-;        }
-;    }
-;    else
-;    {
-;        Run(appPath)
-;    }
-;}
-
-;#+r::  ; Win + Shift + R
-;{
-;    ; processName := "glazewm.exe"
-;    ; exePath := "C:\Program Files\glzr.io\GlazeWM\glazewm.exe"
-;	processName := "Whim.Runner.exe"
-;	exePath := "C:\Users\agrie\AppData\Local\Programs\Whim\Whim.Runner.exe"
-;
-;    ; Kill the process
-;    ProcessClose(processName)
-;
-;    ; Optional: Wait until it fully exits
-;    Loop
-;    {
-;        if !ProcessExist(processName)
-;            break
-;        Sleep(200)
-;    }
-;
-;    ; Restart the process
-;    Run exePath
-;
-;    return
-;}
-
-; ------------------- Recover Hidden Window (Hack) ----------------------
-
-A_TrayMenu.Add("Recover Hidden Window", RecoverHiddenWindow)
-RecoverHiddenWindow(*) {
-  ;MsgBox("About to show InputBox...")
-  result := InputBox("Identifier (ahk_pid ARG or ahk_exe ARG or TITLE):", "Show Window")
-  ;MsgBox("InputBox done.")
-  if (result.Result == "OK" && result.Value != "") {
-    ;if WinExist(result.Value) {
-	  WinShow(result.Value)
-	  WinActivate(result.Value)
-	  WinRestore(result.Value)
-	;}
-  }
+GoToDesktopNumber(num) {
+    global GoToDesktopNumberProc
+    DllCall(GoToDesktopNumberProc, "Int", num-1, "Int")
+    return
 }
 
 ; ------------------- Navigate To Window ----------------------
 
+; Note: Prefer no shift, but Fancyzones uses #Arrow to move window
 #+Left:: NavigateWindow("left")
 #+Down:: NavigateWindow("down")
 #+Up:: NavigateWindow("up")
 #+Right:: NavigateWindow("right")
+
+
 
 NavigateWindow(direction) {
     ; Get current active window
@@ -275,27 +187,6 @@ FindBestWindow(windows, currentX, currentY, direction) {
 }
 
 
-; ------------------- Jump To Desktop ----------------------
 
-hVirtualDesktopAccessor := DllCall("LoadLibrary", "Str", "C:\bin\VirtualDesktopAccessor.dll", "Ptr")
-
-GoToDesktopNumberProc := DllCall("GetProcAddress", "Ptr", hVirtualDesktopAccessor, "AStr", "GoToDesktopNumber", "Ptr")
-
-GoToDesktopNumber(num) {
-    global GoToDesktopNumberProc
-    DllCall(GoToDesktopNumberProc, "Int", num-1, "Int")
-    return
-}
-
-; Hotkeys to jump to specific desktops (Win + Number)
-#1::GoToDesktopNumber(1)  ; Win + 1 = Desktop 1
-#2::GoToDesktopNumber(2)  ; Win + 2 = Desktop 2  
-#3::GoToDesktopNumber(3)  ; Win + 3 = Desktop 3
-#4::GoToDesktopNumber(4)  ; Win + 4 = Desktop 4
-#5::GoToDesktopNumber(5)  ; Win + 5 = Desktop 5
-#6::GoToDesktopNumber(6)  ; Win + 6 = Desktop 6
-#7::GoToDesktopNumber(7)  ; Win + 7 = Desktop 7
-#8::GoToDesktopNumber(8)  ; Win + 8 = Desktop 8
-#9::GoToDesktopNumber(9)  ; Win + 9 = Desktop 9
 
 
