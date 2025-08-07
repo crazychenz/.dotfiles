@@ -38,6 +38,9 @@ print(u"\u001b[0m")
 PYTHON_SCRIPT
 }
 
+if [ -e /data/data/com.termux ]; then
+  source /data/data/com.termux/files/usr/etc/bash_completion.d/git-prompt.sh
+fi
 
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_SHOWDIRTYSTATE=1
@@ -87,7 +90,7 @@ export -f get_prompt_date
 
 # Used to use --cidfile and /proc/1/cpuset, but this is what GPT recommended.
 function get_docker_ident {
-  if [ -f /.dockerenv ] || grep -q 'docker' /proc/1/cgroup; then
+  if [ -f /.dockerenv ] || grep -q 'docker' /proc/1/cgroup 2>/dev/null; then
     # Extract short container ID from /etc/hostname
     echo -e "$COLOR_LIGHT_BROWN($(cat /etc/hostname | cut -c1-12))"
   fi
@@ -106,7 +109,7 @@ function get_k8s_context() {
 export -f get_k8s_context
 
 
-if [ ! -z "$(which kubectl)" ]; then
+if [ ! -z "$(which kubectl 2>/dev/null)" ]; then
   export KUBECONFIG=$(realpath ~)/node0.yaml
   source <(kubectl completion bash)
   alias kc=kubectl
@@ -148,12 +151,12 @@ if (( ${#vscode_ipc_files[@]} )); then
 fi
 
 
-if [ ! -z "$(which lazygit)" ]; then
+if [ ! -z "$(which lazygit 2>/dev/null)" ]; then
   export LG_CONFIG_FILE="$(lazygit --print-config-dir)/config.yml,$(lazygit --print-config-dir)/theme.yml"
 fi
 
 
-if [ ! -z "$(which vivid)" ]; then
+if [ ! -z "$(which vivid 2>/dev/null)" ]; then
   if [ -e "$(realpath ~)/.light_theme" ]; then
     export LS_COLORS="$(vivid generate catppuccin-latte)"
   else
@@ -162,17 +165,17 @@ if [ ! -z "$(which vivid)" ]; then
 fi
 
 
-if [ ! -z "$(which zoxide)" ]; then
+if [ ! -z "$(which zoxide 2>/dev/null)" ]; then
   eval "$(zoxide init bash)"
 fi
 
 
-if [ ! -z "$(which fzf)" ]; then
+if [ ! -z "$(which fzf 2>/dev/null)" ]; then
   eval "$(fzf --bash)"
 fi
 
 
-if [ ! -z "$(which bat)" ]; then
+if [ ! -z "$(which bat 2>/dev/null)" ]; then
   eval "$(bat --completion bash)"
 fi
 
@@ -195,20 +198,20 @@ tools() {
   echo '  # - off-branch, = - with remote, < - behind, > - ahead, <> - diverged'
 
   echo 'Installed Tools:'
-  [ -n "$(which tmux)" ]    && echo "  tmux - terminal multiplexer"
-  [ -n "$(which nvim)" ]    && echo "  nvim - neovim text editor"
-  [ -n "$(which lazygit)" ] && echo "  lazygit - git tui"
-  [ -n "$(which vivid)" ]   && echo "  vivid - terminal colors (LS_COLORS)"
-  [ -n "$(which kubectl)" ] && echo "  kubectl | kc - K8s CLI"
+  [ -n "$(which tmux 2>/dev/null)" ]    && echo "  tmux - terminal multiplexer"
+  [ -n "$(which nvim 2>/dev/null)" ]    && echo "  nvim - neovim text editor"
+  [ -n "$(which lazygit 2>/dev/null)" ] && echo "  lazygit - git tui"
+  [ -n "$(which vivid 2>/dev/null)" ]   && echo "  vivid - terminal colors (LS_COLORS)"
+  [ -n "$(which kubectl 2>/dev/null)" ] && echo "  kubectl | kc - K8s CLI"
                               #echo "  kubectl get-all plugin"
-  [ -n "$(which btop)" ]    && echo "  btop - better top"
-  [ -n "$(which k9s)" ]     && echo "  k9s - k8s tui manager"
-  [ -n "$(which glow)" ]    && echo "  glow - markdown reader"
-  [ -n "$(which yazi)" ]    && echo "  yazi - file manager"
-  [ -n "$(which zoxide)" ]  && echo "  smart cd (i.e. change directory)"
-  [ -n "$(which uv)" ]      && echo "  uv - fast rust-based python pkg mgr"
-  [ -n "$(which fzf)" ]     && echo "  fzf - fuzzy finder (w/ Ctrl-T)"
-  [ -n "$(which bat)" ]     && echo "  bat - cat with syntax highlighting"
+  [ -n "$(which btop 2>/dev/null)" ]    && echo "  btop - better top"
+  [ -n "$(which k9s 2>/dev/null)" ]     && echo "  k9s - k8s tui manager"
+  [ -n "$(which glow 2>/dev/null)" ]    && echo "  glow - markdown reader"
+  [ -n "$(which yazi 2>/dev/null)" ]    && echo "  yazi - file manager"
+  [ -n "$(which zoxide 2>/dev/null)" ]  && echo "  smart cd (i.e. change directory)"
+  [ -n "$(which uv 2>/dev/null)" ]      && echo "  uv - fast rust-based python pkg mgr"
+  [ -n "$(which fzf 2>/dev/null)" ]     && echo "  fzf - fuzzy finder (w/ Ctrl-T)"
+  [ -n "$(which bat 2>/dev/null)" ]     && echo "  bat - cat with syntax highlighting"
 }
 
 
