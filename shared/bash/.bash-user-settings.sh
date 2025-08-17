@@ -136,8 +136,7 @@ else
 fi
 
 export PATH=~/.local/bin:$PATH
-export EDITOR=nvim
-export PROMPT_COMMAND='history -a'
+export PROMPT_COMMAND='history -a; echo -ne "\033]2;${HOSTNAME}\007"'
 alias myip='curl ifconfig.me'
 
 
@@ -185,11 +184,19 @@ fi
 #fi
 
 
-if [ -z "\$(ldd --version | grep -i -e gnu -e glibc)" ]; then
-  export PATH=$(realpath ~)/.local/nvim-linux64/bin:${PATH}
-else
-  export PATH=$(realpath ~)/.local/nvim-linux64-glibc/bin:${PATH}
+if [ ! -z "$(which nvim)" ]; then
+  export EDITOR=nvim
+  alias vi=nvim
 fi
+
+
+# Note: This one is ugly and messes with my flow.
+#if [ ! -z "$(which atuin)" ]; then
+#  # Bash command line syntax highlighting.
+#  source ~/.local/share/blesh/ble.sh
+#  # Enhanced command history.
+#  eval "$(atuin init bash)"
+#fi
 
 
 tools() {
@@ -198,20 +205,28 @@ tools() {
   echo '  # - off-branch, = - with remote, < - behind, > - ahead, <> - diverged'
 
   echo 'Installed Tools:'
-  [ -n "$(which tmux 2>/dev/null)" ]    && echo "  tmux - terminal multiplexer"
-  [ -n "$(which nvim 2>/dev/null)" ]    && echo "  nvim - neovim text editor"
-  [ -n "$(which lazygit 2>/dev/null)" ] && echo "  lazygit - git tui"
-  [ -n "$(which vivid 2>/dev/null)" ]   && echo "  vivid - terminal colors (LS_COLORS)"
-  [ -n "$(which kubectl 2>/dev/null)" ] && echo "  kubectl | kc - K8s CLI"
-                              #echo "  kubectl get-all plugin"
-  [ -n "$(which btop 2>/dev/null)" ]    && echo "  btop - better top"
-  [ -n "$(which k9s 2>/dev/null)" ]     && echo "  k9s - k8s tui manager"
-  [ -n "$(which glow 2>/dev/null)" ]    && echo "  glow - markdown reader"
-  [ -n "$(which yazi 2>/dev/null)" ]    && echo "  yazi - file manager"
-  [ -n "$(which zoxide 2>/dev/null)" ]  && echo "  smart cd (i.e. change directory)"
-  [ -n "$(which uv 2>/dev/null)" ]      && echo "  uv - fast rust-based python pkg mgr"
-  [ -n "$(which fzf 2>/dev/null)" ]     && echo "  fzf - fuzzy finder (w/ Ctrl-T)"
-  [ -n "$(which bat 2>/dev/null)" ]     && echo "  bat - cat with syntax highlighting"
+  [ -n "$(which curl 2>/dev/null)" ]       && echo "  myip - get outside IP address"
+  [ -n "$(which tmux 2>/dev/null)" ]       && echo "  tmux - terminal multiplexer"
+  [ -n "$(which nvim 2>/dev/null)" ]       && echo "  nvim - neovim text editor"
+  [ -n "$(which lazygit 2>/dev/null)" ]    && echo "  lazygit - git tui"
+  [ -n "$(which lazydocker 2>/dev/null)" ] && echo "  lazydocker - docker tui"
+  [ -n "$(which vivid 2>/dev/null)" ]      && echo "  vivid - terminal colors (LS_COLORS)"
+  [ -n "$(which kubectl 2>/dev/null)" ]    && echo "  kubectl | kc - K8s CLI"
+  # TODO: echo "  kubectl get-all plugin"
+  [ -n "$(which btop 2>/dev/null)" ]       && echo "  btop - better top"
+  [ -n "$(which k9s 2>/dev/null)" ]        && echo "  k9s - k8s tui manager"
+  [ -n "$(which glow 2>/dev/null)" ]       && echo "  glow - markdown reader"
+  [ -n "$(which yazi 2>/dev/null)" ]       && echo "  yazi - file manager"
+  [ -n "$(which zoxide 2>/dev/null)" ]     && echo "  smart cd (i.e. change directory)"
+  [ -n "$(which uv 2>/dev/null)" ]         && echo "  uv - fast rust-based python pkg mgr"
+  [ -n "$(which fzf 2>/dev/null)" ]        && echo "  fzf - fuzzy finder (w/ Ctrl-T)"
+  [ -n "$(which bat 2>/dev/null)" ]        && echo "  bat - cat with syntax highlighting"
+  [ -n "$(which rg 2>/dev/null)" ]         && echo "  rg - modernized grep"
+  [ -n "$(which fd 2>/dev/null)" ]         && echo "  fd - modernized find"
+  #[ -n "$(which atuin 2>/dev/null)" ]      && echo "  atuin - modernized history"
+  [ -n "$(which eza 2>/dev/null)" ]        && echo "  eza - modernized ls"
+  [ -n "$(which broot 2>/dev/null)" ]      && echo "  br - file system explorer"
+  [ -n "$(which gopass 2>/dev/null)" ]     && echo "  gopass - secret manager"
 }
 
 
