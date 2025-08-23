@@ -3,9 +3,9 @@
 # Goal: Download latest of a thing and attempt to get the version.
 # Goal: Only acquire statically linked things.
 
-DOWNLOADS=downloads/
-BINDIR=.local/bin/
-CFGDIR=.config/
+DOWNLOADS=bundle/downloads/
+BINDIR=bundle/.local/bin/
+CFGDIR=bundle/.config/
 mkdir -p ${DOWNLOADS}
 mkdir -p ${BINDIR}
 mkdir -p ${CFGDIR}

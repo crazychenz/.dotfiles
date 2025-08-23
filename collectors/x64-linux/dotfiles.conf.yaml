@@ -1,0 +1,32 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ['~']
+
+- link:
+    ~/.local/bin/bat: bundle/.local/bin/bat
+    ~/.local/bin/broot: bundle/.local/bin/broot
+    ~/.local/bin/btop: bundle/.local/bin/btop
+    ~/.local/bin/curlie: bundle/.local/bin/curlie
+    ~/.local/bin/delta: bundle/.local/bin/delta
+    ~/.local/bin/eza: bundle/.local/bin/eza
+    ~/.local/bin/fd: bundle/.local/bin/fd
+    ~/.local/bin/fzf: bundle/.local/bin/fzf
+    ~/.local/bin/glow: bundle/.local/bin/glow
+    ~/.local/bin/gopass: bundle/.local/bin/gopass
+    ~/.local/bin/k3s: bundle/.local/bin/k3s
+    ~/.local/bin/k9s: bundle/.local/bin/k9s
+    ~/.local/bin/kanata: bundle/.local/bin/kanata
+    ~/.local/bin/kubectl-get_all: bundle/.local/bin/kubectl-get_all
+    ~/.local/bin/lazydocker: bundle/.local/bin/lazydocker
+    ~/.local/bin/lazygit: bundle/.local/bin/lazygit
+    ~/.local/bin/nvim: bundle/.local/bin/nvim
+    ~/.local/bin/nvim-linux-x86_64: bundle/.local/bin/nvim-linux-x86_64
+    ~/.local/bin/tmux: bundle/.local/bin/tmux
+    ~/.local/bin/vivid: bundle/.local/bin/vivid
+    ~/.local/bin/ya: bundle/.local/bin/ya
+    ~/.local/bin/yazi: bundle/.local/bin/yazi
+    ~/.local/bin/zoxide: bundle/.local/bin/zoxide
+
