@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd mouseless && stow --target="$(realpath ~)" *
+cd shared && stow --target="$(realpath ~)" *
 
 sed -i '/# \[ dotfiles entry start \]/,/# \[ dotfiles entry end \]/d' ~/.bashrc
 cat <<EOF >>~/.bashrc
