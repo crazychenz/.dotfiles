@@ -3,6 +3,7 @@
 # Goal: Download latest of a thing and attempt to get the version.
 # Goal: Only acquire statically linked things.
 
+
 DOWNLOADS=bundle/downloads/
 BINDIR=bundle/.local/bin/
 CFGDIR=bundle/.config/
@@ -37,6 +38,20 @@ github_download_version() {
     curl -o ${DOWNLOADS}${SOURCE_FNAME} -L "https://github.com/${REPO}/archive/refs/tags/${VERSION}.tar.gz"
   fi
 }
+
+dependency_check() {
+  if [ -z "$(which $2)" ]; then
+    echo "You need $2 in \$PATH to use $1."
+    exit 1
+  fi
+}
+
+dependency_check $0 curl
+dependency_check $0 tar
+dependency_check $0 gzip
+dependency_check $0 unzip
+dependency_check $0 awk
+dependency_check $0 git
 
 ### Tmux
 VERSION=$(github_latest_release_version mjakob-gh/build-static-tmux)

@@ -1,0 +1,26 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ['~']
+
+- link:
+    ~/.local/bin/dive: bundle/.local/bin/dive
+    ~/.local/bin/edit: bundle/.local/bin/edit
+    ~/.local/bin/fq: bundle/.local/bin/fq
+    ~/.local/bin/gping: bundle/.local/bin/gping
+    ~/.local/bin/isd: bundle/.local/bin/isd
+    ~/.local/bin/lazyjournal: bundle/.local/bin/lazyjournal
+    ~/.local/bin/mdtt: bundle/.local/bin/mdtt
+    ~/.local/bin/mlr: bundle/.local/bin/mlr
+    ~/.local/bin/monolith: bundle/.local/bin/monolith
+    ~/.local/bin/otree: bundle/.local/bin/otree
+    ~/.local/bin/rainfrog: bundle/.local/bin/rainfrog
+    ~/.local/bin/rclone: bundle/.local/bin/rclone
+    ~/.local/bin/so: bundle/.local/bin/so
+    ~/.local/bin/termshark: bundle/.local/bin/termshark
+    ~/.local/bin/tjournal: bundle/.local/bin/tjournal
+    ~/.local/bin/typioca: bundle/.local/bin/typioca
+    ~/.local/bin/wtfutil: bundle/.local/bin/wtfutil
+

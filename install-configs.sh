@@ -7,11 +7,7 @@ set -e
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 pushd "${BASEDIR}"
-#git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
-#git submodule update --init --recursive "${DOTBOT_DIR}"
-"${BASEDIR}/dotbot/bin/dotbot" -d "${BASEDIR}" -c "dotfiles.conf.yaml" "${@}"
-[ -e "${BASEDIR}/binaries/binaries.conf.yaml" ] \
-  && "${BASEDIR}/dotbot/bin/dotbot" -d "${BASEDIR}" -c "binaries/binaries.conf.yaml" "${@}"
+  "${BASEDIR}/dotbot/bin/dotbot" -d "${BASEDIR}" -c "dotfiles.conf.yaml" "${@}"
 popd
 
 if [ ! -e ~/.bashrc ]; then touch ~/.bashrc ; fi 
@@ -29,3 +25,8 @@ cat <<EOF >>~/.profile
 source ~/.bash-user-profile.sh
 # [ dotfiles entry end ]
 EOF
+
+if [ ! -e ~/.gitconfig ]; then
+  cp ${BASEDIR}/shared/git/.gitconfig ~/.gitconfig \
+    && echo "Copied .gitconfig to ~. Please update user and email."
+fi

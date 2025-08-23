@@ -7,11 +7,11 @@
 
 - link:
     ~/.config/tmux/tmux.conf: shared/tmux/.config/tmux/tmux.conf
-    ~/.local/bin/tmux-sessionizer: shared/tmux/.local/bin/tmux-sessionizer
-    ~/.local/bin/tmux-cht.sh: shared/tmux/.local/bin/tmux-cht.sh
+    #~/.local/bin/tmux-sessionizer: shared/tmux/.local/bin/tmux-sessionizer
+    #~/.local/bin/tmux-cht.sh: shared/tmux/.local/bin/tmux-cht.sh
     ~/.config/tmux/tmux-cht-command: shared/tmux/.config/tmux/tmux-cht-command 
     ~/.config/tmux/tmux-cht-languages: shared/tmux/.config/tmux/tmux-cht-languages
     ~/.config/nvim/init.lua: shared/nvim/.config/nvim/init.lua
     ~/.bash-user-settings.sh: shared/bash/.bash-user-settings.sh
     ~/.bash-user-profile.sh: shared/bash/.bash-user-profile.sh
-    ~/.gitconfig: shared/git/.gitconfig
+    #~/.gitconfig: shared/git/.gitconfig
