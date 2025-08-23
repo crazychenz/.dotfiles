@@ -6,23 +6,23 @@ Standard Use Case:
 # Clone .dotfiles repo
 cd && git clone https://github.com/crazychenz/.dotfiles.git
 
-# _Optionally_ move .dotfiles to /opt/dotfiles for easy VM access.
+# Optional: Move .dotfiles to /opt/dotfiles for VM access.
 sudo mv ~/.dotfiles /opt/dotfiles
 sudo chown -R $(id -u):$(id -g) /opt/dotfiles
 ln -s /opt/dotfiles ~/.dotfiles
 
-# _Optionally_ download and install x64-linux-gnu binaries.
+# Optional: Download/Install x64-linux-gnu binaries.
 cd .dotfiles/collectors/x64-linux && ./collector.sh
 cd .dotfiles && ./install-x64-linux.sh
 
-# _Optionally_ download and install extra x64-linux-gnu binaries.
+# Optional: Download/Install extra x64-linux-gnu binaries.
 cd ~/.dotfiles/collectors/x64-linux-extra && ./collector.sh
 cd ~/.dotfiles && ./install-extra-x64-linux.sh
 
 # ** Initialize user specific configurations. **
 cd ~/.dotfiles && ./install-configs.sh
 
-# Logout/Login or start new shell to activate new shell config.
+# Logout/Login or Activate new shell config now.
 bash --login
 ```
 
