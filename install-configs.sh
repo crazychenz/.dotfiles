@@ -26,7 +26,17 @@ source ~/.bash-user-profile.sh
 # [ dotfiles entry end ]
 EOF
 
+if [ ! -e ~/.ssh/id_rsa ]; then
+  ssh-keygen -f ~/.ssh/id_rsa -N '' \
+    && echo "Generated new private SSH key."
+else
+  echo "Found SSH key."
+fi
+
 if [ ! -e ~/.gitconfig ]; then
   cp ${BASEDIR}/shared/git/.gitconfig ~/.gitconfig \
     && echo "Copied .gitconfig to ~. Please update user and email."
+else
+  echo "Found .gitconfig. Diff:"
+  diff -Naur ${BASEDIR}/shared/git/.gitconfig ~/.gitconfig
 fi
