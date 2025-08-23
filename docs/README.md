@@ -87,6 +87,10 @@ bash --login
   - typioca - Typing tester
   - wtfutil - TUI Dashboard
 
+## Other Configurations
+
+- keyboard - configurations for keyboard microcontroller firmwares
+- windows - configurations for windows tools (not POSIX compatible)
 
 
 
