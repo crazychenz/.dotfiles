@@ -24,6 +24,7 @@
     ~/.local/bin/lazygit: bundle/.local/bin/lazygit
     ~/.local/bin/nvim: bundle/.local/bin/nvim
     ~/.local/bin/nvim-linux-x86_64: bundle/.local/bin/nvim-linux-x86_64
+    ~/.local/bin/nvim-linux-x86_64/config/nvim: ~/.config/nvim
     ~/.local/bin/tmux: bundle/.local/bin/tmux
     ~/.local/bin/vivid: bundle/.local/bin/vivid
     ~/.local/bin/ya: bundle/.local/bin/ya
