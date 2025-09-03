@@ -22,3 +22,29 @@ After all of the horrible user experiences I observed with using wayfire, I had 
 
 Everything that I had spent a whole day discovering and setting up with wayfire was done in about 30 minutes. Perfect! Moving on ... I now wanted to setup wezterm as a proper shortcut in the Plasma Dock. (I'll want to do this with all my staples, but starting with Wezterm). The key here is that you need to create the `.desktop` file, make it executable, run `kbuildsycoca6`, run it via Plasma's launcher, then pin it to the dock. There may be a more automatic way of doing this, but what is the point? If you need to restart all of plasma without restarting try `kquitapp5 plasmashell && kstart5 plasmashell`. (Something else missing from wayfire btw!)
 
+## The Stack
+
+OS - Debian 13 Trixie
+Desktop Environment - KDE Plasma w/ Wayland
+Terminal - WezTerm (& Konsole via KDE)
+GPU Drivers - Nvidia Proprietary (535/550 from repos, maybe upstream?)
+Browser - Firefox (... eventually Zen & Chrome)
+
+TODO:
+- Hypervisor - KVM
+- Tiling Options
+- Keybindings
+
+Software To Use:
+- Container - Docker
+- Godot
+- Blender
+- Paint.Net equivalent?
+- Steam / Proton
+- Screensaver
+
+
+
+
+
+
