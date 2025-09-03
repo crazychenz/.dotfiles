@@ -24,11 +24,11 @@ Everything that I had spent a whole day discovering and setting up with wayfire 
 
 ## The Stack
 
-OS - Debian 13 Trixie
-Desktop Environment - KDE Plasma w/ Wayland
-Terminal - WezTerm (& Konsole via KDE)
-GPU Drivers - Nvidia Proprietary (535/550 from repos, maybe upstream?)
-Browser - Firefox (... eventually Zen & Chrome)
+- OS - Debian 13 Trixie
+- Desktop Environment - KDE Plasma w/ Wayland
+- Terminal - WezTerm (& Konsole via KDE)
+- GPU Drivers - Nvidia Proprietary (535/550 from repos, maybe upstream?)
+- Browser - Firefox (... eventually Zen & Chrome)
 
 TODO:
 - Hypervisor - KVM
