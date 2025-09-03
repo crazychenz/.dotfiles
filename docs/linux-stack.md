@@ -64,8 +64,6 @@ sudo systemctl status libvirtd
 virsh list --all
 ```
 
-Note: During Windows 11 install, `Shift + F10` to pop terminal. Type `OOBE\BYPASSNRO` to reboot setup into mode that allows you to declare no internet and bypass the microsoft login step.
-
 File locations:
 
 ```
@@ -89,6 +87,10 @@ virt-xml       # XML manipulation
 virt-manager   # Desktop management interface
 virt-viewer    # VM console viewer
 ```
+
+## Windows VM
+
+Note: During Windows 11 install, `Shift + F10` to pop terminal. Type `OOBE\BYPASSNRO` to reboot setup into mode that allows you to declare no internet and bypass the microsoft login step.
 
 ## The Stack
 
