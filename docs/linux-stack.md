@@ -64,6 +64,32 @@ sudo systemctl status libvirtd
 virsh list --all
 ```
 
+Note: During Windows 11 install, `Shift + F10` to pop terminal. Type `OOBE\BYPASSNRO` to reboot setup into mode that allows you to declare no internet and bypass the microsoft login step.
+
+File locations:
+
+```
+# VM definitions (XML files)
+/etc/libvirt/qemu/
+
+# VM disk images
+/var/lib/libvirt/images/
+
+# Network definitions
+/etc/libvirt/qemu/networks/
+
+# Log files
+/var/log/libvirt/
+
+virsh          # Primary CLI interface
+virt-install   # VM creation tool
+virt-clone     # VM cloning
+virt-xml       # XML manipulation
+
+virt-manager   # Desktop management interface
+virt-viewer    # VM console viewer
+```
+
 ## The Stack
 
 - OS - Debian 13 Trixie
