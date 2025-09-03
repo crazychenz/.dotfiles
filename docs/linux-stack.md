@@ -22,6 +22,22 @@ After all of the horrible user experiences I observed with using wayfire, I had 
 
 Everything that I had spent a whole day discovering and setting up with wayfire was done in about 30 minutes. Perfect! Moving on ... I now wanted to setup wezterm as a proper shortcut in the Plasma Dock. (I'll want to do this with all my staples, but starting with Wezterm). The key here is that you need to create the `.desktop` file, make it executable, run `kbuildsycoca6`, run it via Plasma's launcher, then pin it to the dock. There may be a more automatic way of doing this, but what is the point? If you need to restart all of plasma without restarting try `kquitapp5 plasmashell && kstart5 plasmashell`. (Something else missing from wayfire btw!)
 
+## Nvidia Drivers
+
+```
+echo 'export KWIN_DRM_USE_EGL_STREAMS=0' | sudo tee /etc/profile.d/kwin-gbm.sh
+sudo chmod +x /etc/profile.d/kwin-gbm.sh
+echo 'export __GLX_VENDOR_LIBRARY_NAME=nvidia' | sudo tee /etc/profile.d/nvidia-gl.sh
+sudo chmod +x /etc/profile.d/nvidia-gl.sh
+
+sudo apt-get install pkg-config libglvnd0 libglvnd-dev libglvnd-core-dev
+
+sudo systemctl set-default multi-user.target
+sudo reboot
+# Optionally: sudo nvidia-uninstall
+sudo ./NVIDIA-Linux-x86_64-580.82.07.run
+```
+
 ## Wezterm
 
 I had been using the official Debian nvidia drivers, but I wanted to use the more upstream drivers. Not sure what the difference is in the configurations, but wezterm stopped working. Ugh! .... Anyways, falling back to software front_end seemed to work. After some twiddling, I was also able to get the OpenGL front_end to work so long as it has `enable_wayland = false`. WTF is happening here, why is this sooo shit? In any case, wezterm should be up and running with OpenGL using Nvidia 580 proprietary drivers.
@@ -34,7 +50,18 @@ return {
   front_end = "OpenGL",
   --front_end = "Software",
 }
+```
 
+## KVM
+
+```
+sudo apt update
+sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager
+sudo usermod -aG libvirt $USER
+sudo usermod -aG kvm $USER
+
+sudo systemctl status libvirtd
+virsh list --all
 ```
 
 ## The Stack
