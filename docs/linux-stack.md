@@ -92,6 +92,12 @@ virt-viewer    # VM console viewer
 
 Note: During Windows 11 install, `Shift + F10` to pop terminal. Type `OOBE\BYPASSNRO` to reboot setup into mode that allows you to declare no internet and bypass the microsoft login step.
 
+Virtual Guest Drivers: `wget https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso`
+
+## Linux VM
+
+Virtual Guest Drivers: `sudo apt install linux-modules-extra-$(uname -r)`
+
 ## The Stack
 
 - OS - Debian 13 Trixie
