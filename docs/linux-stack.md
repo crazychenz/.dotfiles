@@ -88,6 +88,17 @@ virt-manager   # Desktop management interface
 virt-viewer    # VM console viewer
 ```
 
+"Default" Network Configuration:
+
+```
+virsh net-list --all
+virsh net-define /usr/share/libvirt/networks/default.xml
+virsh net-list --all
+virsh net-start default
+sudo virsh net-start default
+virsh net-autostart default
+```
+
 ## Windows VM
 
 Note: During Windows 11 install, `Shift + F10` to pop terminal. Type `OOBE\BYPASSNRO` to reboot setup into mode that allows you to declare no internet and bypass the microsoft login step.
