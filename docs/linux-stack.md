@@ -99,11 +99,14 @@ sudo virsh net-start default
 virsh net-autostart default
 ```
 
+The most efficient way to visualize the VM is via virt-viewer with spice-guest-tools installed.
+
 ## Windows VM
 
 Note: During Windows 11 install, `Shift + F10` to pop terminal. Type `OOBE\BYPASSNRO` to reboot setup into mode that allows you to declare no internet and bypass the microsoft login step.
 
-Virtual Guest Drivers: `wget https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso`
+- Virtual Guest Drivers: `wget https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso`
+- Spice Guest Tools: `https://spice-space.org/download/windows/spice-guest-tools/`
 
 ## Linux VM
 
