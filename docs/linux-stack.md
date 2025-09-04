@@ -132,6 +132,42 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
+## Pinta (Paint.Net Clone) Builder
+
+Dockerfile
+
+```
+FROM debian:13
+
+RUN apt-get update && apt-get install -y wget
+RUN wget https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb \
+  && dpkg -i packages-microsoft-prod.deb
+
+RUN apt-get update && apt-get install -y \
+  dotnet-sdk-8.0 autotools-dev autoconf-archive gettext intltool \
+  libadwaita-1-dev webp-pixbuf-loader
+
+RUN wget https://github.com/PintaProject/Pinta/releases/download/3.0.3/pinta-3.0.3.tar.gz \
+  && tar -xf pinta-3.0.3.tar.gz
+
+RUN apt-get install -y build-essential
+
+WORKDIR /pinta-3.0.3
+
+RUN ./configure --prefix=/opt/pinta-linux-x64 && make install
+WORKDIR /opt
+RUN tar -zcf pinta-linux-x64.tar.gz pinta-linux-x64
+```
+
+build.sh
+
+```
+#!/bin/sh
+
+mkdir -p context
+docker build $@ -t pinta-builder -f Dockerfile context
+```
+
 ## The Stack
 
 - OS - Debian 13 Trixie
