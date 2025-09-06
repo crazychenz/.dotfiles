@@ -404,6 +404,7 @@ Software To Use:
 - Cutter - Reverse Engineering Tool (Java)
 - ~~Graphics Gale - Sprite Animation Editor (Windows Only)~~
 
+- Notepadqq (Notepad++-ish) (`apt install notepadqq`)
 - 7zip (No Linux GUI) (`apt install 7zip`)
 - Gimp (`apt install gimp`)
 - libre office (`apt install libreoffice`)
