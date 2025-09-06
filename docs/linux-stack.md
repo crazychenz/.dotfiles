@@ -381,13 +381,12 @@ IIRC, there are about a dozen other widgets that come default and I don't think 
 - Desktop Environment - KDE Plasma w/ Wayland
 - Terminal - WezTerm (& Konsole via KDE)
 - GPU Drivers - Nvidia Proprietary (535/550 from repos, maybe upstream?)
-- Browser - Firefox (... eventually Zen & Chrome)
+- Browser - Firefox / Zen / Google Chrome
 
 TODO:
 - Hypervisor - KVM
-- Tiling Options
-- Screensaver
-- NTFS mounts
+- Tiling Options - Built Into KDE Plasma 6, KZones makes it a tiny bit more manageable.
+- NTFS mounts (`sudo mount -t ntfs-3g -o permissions,streams_interface=windows /dev/sda2 ./sda/`)
 
 Software To Use:
 - Container - Docker (apt with ppa)
