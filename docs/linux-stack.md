@@ -229,15 +229,32 @@ IIRC, there are about a dozen other widgets that come default and I don't think 
 TODO:
 - Hypervisor - KVM
 - Tiling Options
-- Keybindings
+- Screensaver
 
 Software To Use:
-- Container - Docker
-- Godot
-- Blender
-- Paint.Net equivalent?
-- Steam / Proton
-- Screensaver
+- Container - Docker (apt with ppa)
+- Godot (download zip)
+- Blender (tar.xz, Note: No wayland, but works.)
+- Pinta (Paint.Net clone, built with docker)
+- Steam / Proton (for Games and Wine)
+- VSCodium (AppImage)
+- Typora (download deb)
+- ~~Adobe Reader w/o McAfee (Use Windows VM, maybe Steam?)~~
+- Discord (download deb)
+- Zulip (AppImage)
+- Draw.io (githuib AppImage)
+- Cutter - Reverse Engineering Tool (Java)
+- ~~Graphics Gale - Sprite Animation Editor (Windows Only)~~
+
+- 7zip (No Linux GUI) (`apt install 7zip`)
+- Gimp (`apt install gimp`)
+- libre office (`apt install libreoffice`)
+- audacity (`apt install audacity`)
+- Inkscape (`apt install inkscape`)
+- Calibre (`apt install calibre`)
+- Wireshark (`apt install wireshark`)
+- PulseView (`apt install pulseview`)
+- tailscale (apt with ppa)
 
 
 
