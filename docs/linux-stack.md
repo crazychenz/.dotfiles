@@ -183,6 +183,74 @@ System Settings -> Shortcuts:
 - Media Controller -> Media playback next - F15 (Launch 6)
 - Media Controller -> Play/pause media playback - F16 (Launch 7)
 
+- KWin -> Expand Window Horizontally - Meta + Ctrl + Right
+- KWin -> Expand Window Veritically - Meta + Ctrl + Up
+- KWin -> Shrink Window Horizontally - Meta + Ctrl + Left
+- KWin -> Shrink Window Vertically - Meta + Ctrl + Down
+- KWin -> Quick Tile Window to the Bottom - Meta + Ctrl + Alt + Down
+- KWin -> Quick Tile Window to the Left - Meta + Ctrl + Alt + Left
+- KWin -> Quick Tile Window to the Right - Meta + Ctrl + Alt + Right
+- KWin -> Quick Tile Window to the Top - Meta + Ctrl + Alt + Up
+- KWin -> Move Window To Next Screen - Meta + Shift + N
+- KWin -> Move Window To Prev Screen - Meta + Shift + P
+- KWin -> Switch To Window Above - Meta + Up
+- KWin -> Switch To Window Below - Meta + Down
+- KWin -> Switch To Window to the Left - Meta + Left
+- KWin -> Switch To Window to the Right - Meta + Right
+
+Note: Settings -> Window Management -> KWin Scripts -> _Click_ Get New ... -> Install "KZones".
+
+- KWin -> KZones: Move active window down - Meta + Shift + Down
+- KWin -> KZones: Move active window left - Meta + Shift + Left
+- KWin -> KZones: Move active window right - Meta + Shift + Right
+- KWin -> KZones: Move active window up - Meta + Shift + Up
+
+### KZones 6 Grid
+
+```
+    {
+        "name": "Six Grid",
+        "zones": [
+            {
+                "x": 0,
+                "y": 0,
+                "height": 50,
+                "width": 33
+            },
+            {
+                "x": 0,
+                "y": 50,
+                "height": 50,
+                "width": 33
+            },
+            {
+                "x": 33,
+                "y": 0,
+                "height": 50,
+                "width": 34
+            },
+            {
+                "x": 33,
+                "y": 50,
+                "height": 50,
+                "width": 34
+            },
+            {
+                "x": 67,
+                "y": 0,
+                "height": 50,
+                "width": 33
+            },
+            {
+                "x": 67,
+                "y": 50,
+                "height": 50,
+                "width": 33
+            }
+        ]
+    }
+```
+
 ### Dock General
 
 I've configured the Dock to be the middle 40% of the screen and set so that windows go beneath it.
