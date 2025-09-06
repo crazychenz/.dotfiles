@@ -230,6 +230,7 @@ TODO:
 - Hypervisor - KVM
 - Tiling Options
 - Screensaver
+- NTFS mounts
 
 Software To Use:
 - Container - Docker (apt with ppa)
