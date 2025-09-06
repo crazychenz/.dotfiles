@@ -208,6 +208,60 @@ Note: Settings -> Window Management -> KWin Scripts -> _Click_ Get New ... -> In
 ### KZones 6 Grid
 
 ```
+[
+    {
+        "name": "Priority Grid",
+        "padding": 0,
+        "zones": [
+            {
+                "x": 0,
+                "y": 0,
+                "height": 100,
+                "width": 25
+            },
+            {
+                "x": 25,
+                "y": 0,
+                "height": 100,
+                "width": 50
+            },
+            {
+                "x": 75,
+                "y": 0,
+                "height": 100,
+                "width": 25
+            }
+        ]
+    },
+    {
+        "name": "Quadrant Grid",
+        "zones": [
+            {
+                "x": 0,
+                "y": 0,
+                "height": 50,
+                "width": 50
+            },
+            {
+                "x": 0,
+                "y": 50,
+                "height": 50,
+                "width": 50
+            },
+            {
+                "x": 50,
+                "y": 50,
+                "height": 50,
+                "width": 50
+            },
+            {
+                "x": 50,
+                "y": 0,
+                "height": 50,
+                "width": 50
+            }
+        ]
+    },
     {
         "name": "Six Grid",
         "zones": [
@@ -248,7 +302,42 @@ Note: Settings -> Window Management -> KWin Scripts -> _Click_ Get New ... -> In
                 "width": 33
             }
         ]
+    },
+    {
+        "name": "Two Right Grid",
+        "zones": [
+            {
+                "x": 0,
+                "y": 0,
+                "height": 100,
+                "width": 33
+            },
+            {
+                "x": 33,
+                "y": 0,
+                "height": 100,
+                "width": 67
+            }
+        ]
+    },
+   {
+        "name": "Two Left Grid",
+        "zones": [
+            {
+                "x": 0,
+                "y": 0,
+                "height": 100,
+                "width": 67
+            },
+            {
+                "x": 67,
+                "y": 0,
+                "height": 100,
+                "width": 33
+            }
+        ]
     }
+]
 ```
 
 ### Dock General
