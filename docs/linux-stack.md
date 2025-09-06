@@ -168,6 +168,56 @@ mkdir -p context
 docker build $@ -t pinta-builder -f Dockerfile context
 ```
 
+## KDE Configurations
+
+### Keybindings
+
+I tried xkbcommon (no bueno with Wayland), I tried ~/.config/kglobalshortcutsrc and KDE reset the content when I reset the system (WTF?!). I don't want to spend any more time on this... you need to use the GUI with the following settings.
+
+System Settings -> Shortcuts:
+
+- Konsole -> Launch - Meta + Enter
+- KRunner -> Launch - Meta + Space
+- Audio Volume -> Decrease Volume - F13 (Tools)
+- Audio Volume -> Increase Volume - F14 (Launch 5)
+- Media Controller -> Media playback next - F15 (Launch 6)
+- Media Controller -> Play/pause media playback - F16 (Launch 7)
+
+### Dock General
+
+I've configured the Dock to be the middle 40% of the screen and set so that windows go beneath it.
+
+### Dock Launchers
+
+Create the various `.desktop` files you want in `~/.local/share/applications`. For example:
+
+```ini
+[Desktop Entry]
+Name=Spotify
+Comment=Spotify Client
+Keywords=music
+Icon=spotify-client
+TryExec=spotify
+Exec=spotify
+Type=Application
+Categories=Entertainment
+Terminal=false
+```
+
+Icons are stored in `~/.local/share/icons/` or you can use a upstream one from `/usr/share/icons/`. Mark the file with `chmod 755`. Optionally run `kbuildsycoca6` to force KDE to see your `.desktop` files.
+
+Now, here is the bit that took forever for me to acknowledge... Whether it be GNOME, KDE, or something else. Don't treat a `.desktop` file like a shortcut in Windows. In Windows you can drag and drop these files into different locations and they just work, not the case in Linux. Instead, search for the `.desktop` instance in the DE's launcher and then copy or "pin" that discovered instance to docks or where ever. The is because we want the ever changing and 5% stable APIs used in these environments to deal with all of the commands and database updates that are needed to keep things coherent. Its not as elegant as a dotfile, but that is what you get when you try to use a Unix based system like its Windows or MacOS.
+
+### Dock Widgets
+
+I like to keep an eye on Disk Usage, CPU Usage, RAM Usage. I've added the following widgets to my setup for this:
+
+- Disk Usage
+- Individual Core Usage
+- Memory Usage
+
+IIRC, there are about a dozen other widgets that come default and I don't think any of them are worth removing atm.
+
 ## The Stack
 
 - OS - Debian 13 Trixie
