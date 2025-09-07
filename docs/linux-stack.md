@@ -110,7 +110,41 @@ Note: During Windows 11 install, `Shift + F10` to pop terminal. Type `OOBE\BYPAS
 
 ## Linux VM
 
-Virtual Guest Drivers: `sudo apt install linux-modules-extra-$(uname -r)`
+- Installed Trixie from DVD. Did not install Desktop Environment since we're running from a Linux Desktop environment.
+- Add user to sudo group.
+- Comment out DVD as a repo from `/etc/apt/sources.list`.
+
+```
+# Install on HOST:
+apt-get install virtiofsd
+
+# Memory -> Click "Enable Shared Memory"
+# Add Hardware -> Filesystem ->
+#     { Driver: virtiofs, Source: /opt/dotfiles, Target: dotfiles }
+# Restart VM
+```
+
+```
+Install on GUEST:
+apt-get update
+apt-get install sudo git rsync curl
+
+# Log out and back in.
+
+# Install critical things.
+sudo apt install qemu-guest-agent spice-vdagent
+
+# Setup file share in Guest:
+sudo mkdir -p /opt/dotfiles
+sudo chown 1000:1000 /opt/dotfiles
+sudo mount -t virtiofs dotfiles /opt/dotfiles -o uid=$(id -u user),gid=$(id -g user)
+# /etc/fstab
+# dotfiles  /opt/dotfiles  virtiofs  defaults,uid=1000,gid=1000  0  0
+```
+
+Run from host: `sudo virt-viewer desktopvm & disown`
+
+Note: There are two contexts for virt-viewer, user and system. Which one you use is dependent on how virt-manager is connected to libvirtd.
 
 ## Docker
 
