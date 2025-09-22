@@ -244,31 +244,8 @@ Note: Settings -> Window Management -> KWin Scripts -> _Click_ Get New ... -> In
 ```
 [
     {
-        "name": "Priority Grid",
-        "padding": 0,
-        "zones": [
-            {
-                "x": 0,
-                "y": 0,
-                "height": 100,
-                "width": 25
-            },
-            {
-                "x": 25,
-                "y": 0,
-                "height": 100,
-                "width": 50
-            },
-            {
-                "x": 75,
-                "y": 0,
-                "height": 100,
-                "width": 25
-            }
-        ]
-    },
-    {
         "name": "Quadrant Grid",
+        "padding": 8,
         "zones": [
             {
                 "x": 0,
@@ -298,6 +275,7 @@ Note: Settings -> Window Management -> KWin Scripts -> _Click_ Get New ... -> In
     },
     {
         "name": "Six Grid",
+        "padding": 8,
         "zones": [
             {
                 "x": 0,
@@ -339,6 +317,7 @@ Note: Settings -> Window Management -> KWin Scripts -> _Click_ Get New ... -> In
     },
     {
         "name": "Two Right Grid",
+        "padding": 8,
         "zones": [
             {
                 "x": 0,
@@ -356,6 +335,7 @@ Note: Settings -> Window Management -> KWin Scripts -> _Click_ Get New ... -> In
     },
    {
         "name": "Two Left Grid",
+        "padding": 8,
         "zones": [
             {
                 "x": 0,
@@ -368,6 +348,18 @@ Note: Settings -> Window Management -> KWin Scripts -> _Click_ Get New ... -> In
                 "y": 0,
                 "height": 100,
                 "width": 33
+            }
+        ]
+    },
+    {
+        "name": "Center",
+        "padding": 8,
+        "zones": [
+            {
+                "x": 33,
+                "y": 0,
+                "height": 100,
+                "width": 34
             }
         ]
     }
