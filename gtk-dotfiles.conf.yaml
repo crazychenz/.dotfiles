@@ -7,6 +7,7 @@
 
 - link:
     ~/.local/share/applications/ssh-add.desktop: shared/gtk/.local/share/applications/ssh-add.desktop
+    ~/.config/autostart/ssh-add.desktop: shared/gtk/.local/share/applications/ssh-add.desktop
 
     ~/.local/bin/zen: shared/gtk/.local/bin/zen
     ~/.local/share/applications/Zen.desktop: shared/gtk/.local/share/applications/Zen.desktop
