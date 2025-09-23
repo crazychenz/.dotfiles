@@ -1,0 +1,13 @@
+[Desktop Entry]
+Comment=Make Games
+Exec=Godot_v4.4.1-stable_linux.x86_64
+GenericName=Game Engine Editor
+Icon=godot
+Name=Godot
+NoDisplay=false
+Path=
+PrefersNonDefaultGPU=false
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application

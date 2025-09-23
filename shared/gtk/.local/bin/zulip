@@ -1,0 +1,4 @@
+#!/bin/bash
+
+exec setsid zulip.AppImage >/dev/null 2>&1 &
+

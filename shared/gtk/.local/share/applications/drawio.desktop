@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Draw.io
+Exec=drawio.AppImage
+Icon=drawio
+NoDisplay=false
+PrefersNonDefaultGPU=false
+StartupNotify=true
+Terminal=false
+Type=Application

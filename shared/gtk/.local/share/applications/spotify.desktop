@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Spotify
+TryExec=spotify
+Exec=spotify
+Icon=spotify-icon
+NoDisplay=false
+Path=
+PrefersNonDefaultGPU=false
+StartupNotify=true
+Terminal=false
+Type=Application

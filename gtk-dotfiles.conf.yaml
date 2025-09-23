@@ -17,6 +17,43 @@
     ~/.local/share/applications/WezTerm.desktop: shared/gtk/.local/share/applications/WezTerm.desktop
     ~/.local/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png: shared/gtk/.local/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png
 
+    ~/.local/bin/codium: shared/gtk/.local/bin/codium
+    ~/.local/share/applications/codium.desktop: shared/gtk/.local/share/applications/codium.desktop
+    ~/.local/share/icons/hicolor/32x32/apps/vscodium.png: shared/gtk/.local/share/icons/hicolor/32x32/apps/vscodium.png
+    ~/.local/share/icons/hicolor/48x48/apps/vscodium.png: shared/gtk/.local/share/icons/hicolor/48x48/apps/vscodium.png
+    ~/.local/share/icons/hicolor/64x64/apps/vscodium.png: shared/gtk/.local/share/icons/hicolor/64x64/apps/vscodium.png
+    ~/.local/share/icons/hicolor/128x128/apps/vscodium.png: shared/gtk/.local/share/icons/hicolor/128x128/apps/vscodium.png
+    ~/.local/share/icons/hicolor/256x256/apps/vscodium.png: shared/gtk/.local/share/icons/hicolor/256x256/apps/vscodium.png
+    ~/.local/share/icons/hicolor/512x512/apps/vscodium.png: shared/gtk/.local/share/icons/hicolor/512x512/apps/vscodium.png
+
+    ~/.local/bin/drawio: shared/gtk/.local/bin/drawio
+    ~/.local/share/applications/drawio.desktop: shared/gtk/.local/share/applications/drawio.desktop
+    ~/.local/share/icons/hicolor/128x128/apps/drawio.png: shared/gtk/.local/share/icons/hicolor/128x128/apps/drawio.png
+    ~/.local/share/icons/hicolor/512x512/apps/drawio.png: shared/gtk/.local/share/icons/hicolor/512x512/apps/drawio.png
+    ~/.local/share/icons/hicolor/256x256/apps/drawio.png: shared/gtk/.local/share/icons/hicolor/256x256/apps/drawio.png
+    ~/.local/share/icons/hicolor/64x64/apps/drawio.png: shared/gtk/.local/share/icons/hicolor/64x64/apps/drawio.png
+    ~/.local/share/icons/hicolor/16x16/apps/drawio.png: shared/gtk/.local/share/icons/hicolor/16x16/apps/drawio.png
+    ~/.local/share/icons/hicolor/96x96/apps/drawio.png: shared/gtk/.local/share/icons/hicolor/96x96/apps/drawio.png
+    ~/.local/share/icons/hicolor/192x192/apps/drawio.png: shared/gtk/.local/share/icons/hicolor/192x192/apps/drawio.png
+    ~/.local/share/icons/hicolor/32x32/apps/drawio.png: shared/gtk/.local/share/icons/hicolor/32x32/apps/drawio.png
+    ~/.local/share/icons/hicolor/720x720/apps/drawio.png: shared/gtk/.local/share/icons/hicolor/720x720/apps/drawio.png
+    ~/.local/share/icons/hicolor/1024x1024/apps/drawio.png: shared/gtk/.local/share/icons/hicolor/1024x1024/apps/drawio.png
+    ~/.local/share/icons/hicolor/48x48/apps/drawio.png: shared/gtk/.local/share/icons/hicolor/48x48/apps/drawio.png
+    ~/.local/share/icons/hicolor/scalable/apps/drawio.svg: shared/gtk/.local/share/icons/hicolor/scalable/apps/drawio.svg
+
+    ~/.local/share/applications/godot.desktop: shared/gtk/.local/share/applications/godot.desktop
+    ~/.local/share/icons/hicolor/128x128/apps/godot.png: shared/gtk/.local/share/icons/hicolor/128x128/apps/godot.png
+
+    ~/.local/share/applications/pinta.desktop: shared/gtk/.local/share/applications/pinta.desktop
+    ~/.local/share/icons/hicolor/scalable/apps/pinta.svg: shared/gtk/.local/share/icons/hicolor/scalable/apps/pinta.svg
+
+    ~/.local/share/applications/spotify.desktop: shared/gtk/.local/share/applications/spotify.desktop
+    ~/.local/share/icons/hicolor/512x512/apps/spotify-icon.png: shared/gtk/.local/share/icons/hicolor/512x512/apps/spotify-icon.png
+
+    ~/.local/bin/zulip: shared/gtk/.local/bin/zulip
+    ~/.local/share/applications/zulip.desktop: shared/gtk/.local/share/applications/zulip.desktop
+    ~/.local/share/icons/hicolor/512x512/apps/zulip.png: shared/gtk/.local/share/icons/hicolor/512x512/apps/zulip.png
+
 
 
     

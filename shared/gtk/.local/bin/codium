@@ -1,0 +1,4 @@
+#!/bin/bash
+
+exec setsid codium.AppImage >/dev/null 2>&1 &
+

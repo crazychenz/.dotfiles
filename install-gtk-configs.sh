@@ -18,13 +18,12 @@ if [ -n "$(which kbuildsycoca6)" ]; then
   kbuildsycoca6 --noincremental
 fi
 
-if [ -z "$(which zen.AppImage)" ]; then
-  echo zen.Appimage not detected in PATH.
-fi
+for app in pinta zen.AppImage wezterm.AppImage drawio.AppImage codium.AppImage zulip.AppImage; do
+  if [ -z "$(which $app)" ]; then
+    echo $app not detected, but expected in PATH.
+  fi
+done
 
-if [ -z "$(which wezterm.AppImage)" ]; then
-  echo wezterm.Appimage not detected in PATH.
-fi
 
 
 
