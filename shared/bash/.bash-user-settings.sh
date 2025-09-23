@@ -120,7 +120,7 @@ fi
 # Note: Without \[ \] properly placed, wrapping will not work correctly.
 # More info found at: https://robotmoon.com/256-colors/
 USERHOST_PSENTRY='\[$COLOR_LIGHT_BLUE\]\u\[$COLOR_GRAY\]@\[$COLOR_GREEN\]\h '
-PS1="${debian_chroot:+($debian_chroot)}$USERHOST_PSENTRY"
+PS1="${PS1_TAG}${debian_chroot:+($debian_chroot)}$USERHOST_PSENTRY"
 PS1="$PS1\$(get_docker_ident)"
 PS1="$PS1\$(get_k8s_context)"
 PS1="$PS1\$(git_branch)"
