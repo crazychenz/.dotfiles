@@ -202,6 +202,26 @@ mkdir -p context
 docker build $@ -t pinta-builder -f Dockerfile context
 ```
 
+## System Config
+
+`/etc/sysctl.d/99-inotify.conf`:
+
+```
+fs.inotify.max_user_watches=524288
+fs.inotify.max_user_instances=512
+fs.inotify.max_queued_events=16384
+```
+
+Run: `sudo sysctl --system`
+
+`/etc/systemd/user.conf`:
+
+```
+DefaultLimitNOFILE=65535
+```
+
+Run: `sudo systemctl daemon-reexec`
+
 ## KDE Configurations
 
 ### Keybindings
