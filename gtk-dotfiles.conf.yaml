@@ -1,0 +1,19 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ['~']
+
+- link:
+    ~/.local/bin/zen: shared/gtk/.local/bin/zen
+    ~/.local/share/applications/Zen.desktop: shared/gtk/.local/share/applications/Zen.desktop
+    ~/.local/share/icons/hicolor/128x128/apps/zen.png: shared/gtk/.local/share/icons/hicolor/128x128/apps/zen.png
+    
+    ~/.local/bin/wezterm: shared/gtk/.local/bin/wezterm
+    ~/.local/share/applications/WezTerm.desktop: shared/gtk/.local/share/applications/WezTerm.desktop
+    ~/.local/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png: shared/gtk/.local/share/icons/hicolor/128x128/apps/org.wezfurlong.wezterm.png
+
+
+
+    
