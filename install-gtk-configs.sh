@@ -10,12 +10,20 @@ pushd "${BASEDIR}"
   "${BASEDIR}/dotbot/bin/dotbot" -d "${BASEDIR}" -c "gtk-dotfiles.conf.yaml" "${@}"
 popd
 
-if [ ! -z "$(which update-desktop-database)" ]; then
+if [ -n "$(which update-desktop-database)" ]; then
   update-desktop-database ~/.local/share/applications/
 fi
 
-if [ ! -z "$(which kbuildsycoca6)" ]; then
+if [ -n "$(which kbuildsycoca6)" ]; then
   kbuildsycoca6 --noincremental
+fi
+
+if [ -z "$(which zen.AppImage)" ]; then
+  echo zen.Appimage not detected in PATH.
+fi
+
+if [ -z "$(which wezterm.AppImage)" ]; then
+  echo wezterm.Appimage not detected in PATH.
 fi
 
 
