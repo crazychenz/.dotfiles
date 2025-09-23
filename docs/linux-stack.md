@@ -241,6 +241,8 @@ Note: Settings -> Window Management -> KWin Scripts -> _Click_ Get New ... -> In
 
 ### KZones 6 Grid
 
+<details><summary>KZones Layout Config</summary>
+
 ```
 [
     {
@@ -366,6 +368,8 @@ Note: Settings -> Window Management -> KWin Scripts -> _Click_ Get New ... -> In
 ]
 ```
 
+</details>
+
 ### Dock General
 
 I've configured the Dock to be the middle 40% of the screen and set so that windows go beneath it.
@@ -390,6 +394,8 @@ Terminal=false
 Icons are stored in `~/.local/share/icons/` or you can use a upstream one from `/usr/share/icons/`. Mark the file with `chmod 755`. Optionally run `kbuildsycoca6` to force KDE to see your `.desktop` files.
 
 Now, here is the bit that took forever for me to acknowledge... Whether it be GNOME, KDE, or something else. Don't treat a `.desktop` file like a shortcut in Windows. In Windows you can drag and drop these files into different locations and they just work, not the case in Linux. Instead, search for the `.desktop` instance in the DE's launcher and then copy or "pin" that discovered instance to docks or where ever. The is because we want the ever changing and 5% stable APIs used in these environments to deal with all of the commands and database updates that are needed to keep things coherent. Its not as elegant as a dotfile, but that is what you get when you try to use a Unix based system like its Windows or MacOS.
+
+Note: .dotfiles/shared/gtk is now a location I keep .desktop files. Run `install-gtk-configs.sh` to install. Also, use `gtk-launch` to start the desktop files (without extension). Use `strace -f gtk-launch <app>` to examine failures. 
 
 ### Dock Widgets
 
