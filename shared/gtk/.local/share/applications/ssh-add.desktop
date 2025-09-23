@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=SSH Agent Add
+Exec=/bin/bash -c "ssh-add ~/.ssh/id_rsa"
+X-GNOME-Autostart-enabled=true
+Comment=Add SSH key on Plasma login
