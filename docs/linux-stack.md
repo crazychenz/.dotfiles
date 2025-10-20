@@ -374,14 +374,26 @@ Note: Settings -> Window Management -> KWin Scripts -> _Click_ Get New ... -> In
         ]
     },
     {
-        "name": "Center",
+        "name": "Columns",
         "padding": 8,
         "zones": [
+            {
+                "x": 0,
+                "y": 0,
+                "height": 100,
+                "width": 33
+            },
             {
                 "x": 33,
                 "y": 0,
                 "height": 100,
                 "width": 34
+            },
+            {
+                "x": 67,
+                "y": 0,
+                "height": 100,
+                "width": 33
             }
         ]
     }
