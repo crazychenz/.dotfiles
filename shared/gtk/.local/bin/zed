@@ -1,0 +1,4 @@
+#!/bin/bash
+
+exec setsid ~/.local/bin/zed.app/bin/zed >/dev/null 2>&1 &
+

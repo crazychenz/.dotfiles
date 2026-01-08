@@ -3,7 +3,7 @@
       relink: true
       create: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - link:
     ~/.local/share/applications/ssh-add.desktop: shared/gtk/.local/share/applications/ssh-add.desktop
@@ -54,6 +54,7 @@
     ~/.local/share/applications/zulip.desktop: shared/gtk/.local/share/applications/zulip.desktop
     ~/.local/share/icons/hicolor/512x512/apps/zulip.png: shared/gtk/.local/share/icons/hicolor/512x512/apps/zulip.png
 
-
-
-    
+    ~/.local/bin/zed: shared/gtk/.local/bin/zed
+    ~/.local/share/applications/zed.desktop: shared/gtk/.local/share/applications/zed.desktop
+    ~/.local/share/icons/hicolor/512x512/apps/zed.png: shared/gtk/.local/share/icons/hicolor/512x512/apps/zed.png
+    ~/.local/share/icons/hicolor/1024x1024/apps/zed.png: shared/gtk/.local/share/icons/hicolor/1024x1024/apps/zed.png
