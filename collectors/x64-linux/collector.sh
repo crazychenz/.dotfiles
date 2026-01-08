@@ -217,6 +217,14 @@ mkdir -p ${CFGDIR}zoxide
 tar -xf ${DOWNLOADS}${FNAME} -C ${CFGDIR}zoxide completions
 
 
+### syncthing
+VERSION=$(github_latest_release_version syncthing/syncthing)
+FNAME=syncthing-linux-amd64-v$(echo -n $VERSION | cut -c2-).tar.gz
+github_download_version syncthing/syncthing $VERSION ${FNAME}
+echo Installing: ${FNAME}
+tar -xf ${DOWNLOADS}${FNAME} -C ${BINDIR} --strip-components=1 syncthing-linux-amd64-${VERSION}/syncthing
+
+
 ### kanata
 VERSION=$(github_latest_release_version jtroo/kanata)
 github_download_version jtroo/kanata $VERSION kanata
