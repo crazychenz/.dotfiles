@@ -1,0 +1,20 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ['~']
+
+- link:
+    ~/.local/share/fonts/MononokiNerdFontMono-Italic.ttf: shared/fonts/.local/share/fonts/MononokiNerdFontMono-Italic.ttf 
+    ~/.local/share/fonts/MononokiNerdFontMono-Regular.ttf: shared/fonts/.local/share/fonts/MononokiNerdFontMono-Regular.ttf
+    ~/.local/share/fonts/MononokiNerdFont-Bold.ttf: shared/fonts/.local/share/fonts/MononokiNerdFont-Bold.ttf
+    ~/.local/share/fonts/MononokiNerdFontPropo-Bold.ttf: shared/fonts/.local/share/fonts/MononokiNerdFontPropo-Bold.ttf
+    ~/.local/share/fonts/MononokiNerdFont-BoldItalic.ttf: shared/fonts/.local/share/fonts/MononokiNerdFont-BoldItalic.ttf
+    ~/.local/share/fonts/MononokiNerdFontPropo-BoldItalic.ttf: shared/fonts/.local/share/fonts/MononokiNerdFontPropo-BoldItalic.ttf
+    ~/.local/share/fonts/MononokiNerdFont-Italic.ttf: shared/fonts/.local/share/fonts/MononokiNerdFont-Italic.ttf
+    ~/.local/share/fonts/MononokiNerdFontPropo-Italic.ttf: shared/fonts/.local/share/fonts/MononokiNerdFontPropo-Italic.ttf
+    ~/.local/share/fonts/MononokiNerdFont-Regular.ttf: shared/fonts/.local/share/fonts/MononokiNerdFont-Regular.ttf
+    ~/.local/share/fonts/MononokiNerdFontPropo-Regular.ttf: shared/fonts/.local/share/fonts/MononokiNerdFontPropo-Regular.ttf
+    ~/.local/share/fonts/MononokiNerdFontMono-Bold.ttf: shared/fonts/.local/share/fonts/MononokiNerdFontMono-Bold.ttf
+    ~/.local/share/fonts/MononokiNerdFontMono-BoldItalic.ttf: shared/fonts/.local/share/fonts/MononokiNerdFontMono-BoldItalic.ttf

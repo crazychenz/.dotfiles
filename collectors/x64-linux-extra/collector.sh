@@ -197,12 +197,12 @@ tar -xf ${DOWNLOADS}${FNAME} -C ${BINDIR} ./tjournal
 
 
 ### typioca - type speed tool
-REPO=bloznelis/typioca
-VERSION=$(github_latest_release_version ${REPO})
-FNAME=typioca-linux-amd64
-github_download_version ${REPO} ${VERSION} ${FNAME}
-echo Installing: ${FNAME}
-cp ${DOWNLOADS}${FNAME} ${BINDIR}typioca && chmod +x ${BINDIR}typioca
+#REPO=bloznelis/typioca
+#VERSION=$(github_latest_release_version ${REPO})
+#FNAME=typioca-linux-amd64
+#github_download_version ${REPO} ${VERSION} ${FNAME}
+#echo Installing: ${FNAME}
+#cp ${DOWNLOADS}${FNAME} ${BINDIR}typioca && chmod +x ${BINDIR}typioca
 
 
 
