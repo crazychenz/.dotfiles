@@ -296,6 +296,24 @@ Note: Settings -> Window Management -> KWin Scripts -> _Click_ Get New ... -> In
         ]
     },
     {
+        "name": "Half and Half",
+        "padding": 8,
+        "zones": [
+            {
+                "x": 0,
+                "y": 0,
+                "height": 100,
+                "width": 50
+            },
+            {
+                "x": 50,
+                "y": 0,
+                "height": 100,
+                "width": 50
+            }
+        ]
+    },
+    {
         "name": "Six Grid",
         "padding": 8,
         "zones": [
