@@ -1,3 +1,7 @@
+if ! declare -f __git_ps1 > /dev/null 2>&1; then
+    __git_ps1() { :; }
+fi
+
 COLOR_RESET="$(tput sgr0)"
 if [ -e "$(realpath ~)/.light_theme" ]; then
   COLOR_LIGHT_BROWN="$(tput setaf 178)"
@@ -23,6 +27,20 @@ else
   COLOR_RED="$(tput setaf 167)"
   COLOR_GRAY="$(tput setaf 243)"
 fi
+
+# For each bash, calculate depth to PROC 1.
+_process_depth() {
+    local pid=$$ count=0 ppid
+    while [ $(($pid)) -gt 1 ]; do
+	ppid=$(awk '/^PPid:/{print $2}' /proc/$pid/status 2>/dev/null)
+        [[ "$ppid" =~ ^[0-9]+$ ]] || break
+        pid=$ppid
+        #pid=$(awk '{print $4}' /proc/$pid/stat 2>/dev/null) || break
+        (( count++ ))
+    done
+    echo -n "$count"
+}
+export PROCESS_DEPTH=$(_process_depth)
 
 # Helper for showing colors in user specific terminal window+profile.
 # Inspired by:
@@ -119,7 +137,7 @@ fi
 
 # Note: Without \[ \] properly placed, wrapping will not work correctly.
 # More info found at: https://robotmoon.com/256-colors/
-USERHOST_PSENTRY='\[$COLOR_LIGHT_BLUE\]\u\[$COLOR_GRAY\]@\[$COLOR_GREEN\]\h '
+USERHOST_PSENTRY='\[$COLOR_GRAY\]$PROCESS_DEPTH \[$COLOR_LIGHT_BLUE\]\u\[$COLOR_GRAY\]@\[$COLOR_GREEN\]\h '
 PS1="${PS1_TAG}${debian_chroot:+($debian_chroot)}$USERHOST_PSENTRY"
 PS1="$PS1\$(get_docker_ident)"
 PS1="$PS1\$(get_k8s_context)"
